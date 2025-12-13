@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delong Li | Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 10%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* 动态打字机光标 */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Section 通用样式 */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 300px;
+            height: 1px;
+            background: #334155;
+            margin-left: 20px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        /* 研究兴趣标签 */
+        .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .interest-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        /* 论文卡片 */
+        .paper-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            border-color: var(--accent);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 0.8rem;
+            color: #fbbf24; /* Amber for In Process */
+            font-family: 'JetBrains Mono', monospace;
+            border: 1px solid #fbbf24;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        .paper-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .paper-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            nav, .hero, section { padding: 1.5rem 5%; }
+            .section-title::after { width: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">DL.</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h2 class="typing-cursor">Hi, I am Delong Li</h2>
+        <h1>Building Trustworthy AI</h1>
+        <p>
+            Master by Research at <strong>University of Technology Sydney (UTS)</strong>.<br>
+            Research Support at School of Electrical & Data Engineering.
+        </p>
+        <p style="font-size: 0.9rem; color: var(--accent); margin-top: -1rem;">
+            Focusing on Machine Unlearning, AI Security, & Federated Learning.
+        </p>
+        <a href="#contact" class="btn">Get In Touch</a>
+    </section>
+
+    <section id="about">
+        <h3 class="section-title"><span>01.</span>About Me</h3>
+        <div style="max-width: 800px;">
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+                I am currently a Master by Research student at the University of Technology Sydney (UTS), serving as Research Support within the School of Electrical & Data Engineering. 
+            </p>
+            <p style="margin-bottom: 2rem; color: var(--text-secondary);">
+                My research sits at the intersection of privacy, security, and large language models. I am passionate about making AI systems not only more powerful but also more <strong>auditable, secure, and compliant</strong> with human values.
+            </p>
+            
+            <h4 style="margin-bottom: 1rem; color: var(--text-main);">Research Interests</h4>
+            <div class="interests-grid">
+                <span class="interest-tag">Machine Unlearning</span>
+                <span class="interest-tag">AI for Security (AI4Security)</span>
+                <span class="interest-tag">Federated Learning</span>
+                <span class="interest-tag">Differential Privacy</span>
+                <span class="interest-tag">Large Language Models (LLMs)</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <h3 class="section-title"><span>02.</span>Selected Works</h3>
+        
+        <div class="paper-card">
+            <div class="status-badge">In Process</div>
+            <div class="paper-title">AuditableLLM: A Hash-Chain-Backed, Compliance-Aware Auditable Framework for Large Language Models</div>
+            <div class="paper-meta">
+                <strong>Delong Li</strong>, et al.
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                Proposing a novel framework to ensure compliance and auditability in LLMs using hash-chain technology, addressing critical gaps in current AI governance.
+            </p>
+        </div>
+
+        <div class="paper-card">
+            <div class="status-badge">In Process</div>
+            <div class="paper-title">FedVILA: Federated LoRA-based Unlearning for Large Language Models</div>
+            <div class="paper-meta">
+                <strong>Delong Li</strong>, et al.
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                Exploring the intersection of Federated Learning and Machine Unlearning, specifically utilizing LoRA adapters to achieve efficient data removal in distributed environments.
+            </p>
+        </div>
+
+        <div class="paper-card">
+            <div class="status-badge">In Process</div>
+            <div class="paper-title">A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</div>
+            <div class="paper-meta">
+                <strong>Delong Li</strong>, et al.
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                A comprehensive survey categorizing current methodologies in parameter-efficient unlearning, providing a taxonomy and evaluation standards for the community.
+            </p>
+        </div>
+
+    </section>
+
+    <section id="contact" style="text-align: center; padding-bottom: 10rem;">
+        <h3 class="section-title" style="justify-content: center; margin-bottom: 1rem;"><span>03.</span>What's Next?</h3>
+        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Get In Touch</h2>
+        <p style="max-width: 600px; margin: 0 auto 3rem auto; color: var(--text-secondary);">
+            I am always open to discussing new research collaborations, especially regarding LLM security and privacy. Whether you have a question or just want to say hi, my inbox is open!
+        </p>
+        <a href="mailto:delong.li-1@student.uts.edu.au" class="btn">Say Hello</a>
+        
+        <div style="margin-top: 3rem; font-size: 1.5rem;">
+            <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-github"></i></a>
+            <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+            <a href="#" style="color: var(--text-secondary); margin: 0 10px;"><i class="fas fa-graduation-cap"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>Designed & Built by Delong Li using Gemini.</p>
+        <p>&copy; 2025 All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 简单的打字机效果脚本
+        const text = "Hi, I am Delong Li";
+        const typingElement = document.querySelector('.typing-cursor');
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                typingElement.textContent = text.slice(0, index + 1);
+                index++;
+                setTimeout(type, 100);
+            }
+        }
+        
+        // 页面加载完成后开始打字
+        window.onload = () => {
+            typingElement.textContent = "";
+            setTimeout(type, 500);
+        };
+    </script>
+</body>
+</html>
