@@ -220,7 +220,6 @@
         .paper-header-content {
             flex: 1;
             padding-right: 2rem;
-            /* 关键修复：防止Flex子项撑开父容器，强制允许文字换行 */
             min-width: 0; 
         }
 
@@ -241,7 +240,6 @@
             margin-bottom: 0.5rem;
             color: var(--text-main);
             transition: color 0.3s;
-            /* 关键修复：强制长单词换行，避免重叠 */
             overflow-wrap: break-word;
             word-wrap: break-word;
             word-break: break-word; 
@@ -261,7 +259,6 @@
         .paper-short-desc {
             color: var(--text-secondary); 
             font-size: 0.95rem;
-            /* 同样应用换行规则 */
             overflow-wrap: break-word;
         }
 
@@ -270,7 +267,6 @@
             font-size: 1.2rem;
             transition: transform 0.4s ease;
             margin-top: 1rem; 
-            /* 防止箭头被挤压 */
             flex-shrink: 0; 
         }
 
@@ -287,7 +283,7 @@
         }
 
         .paper-card.open .paper-body {
-            max-height: 1500px; /* 增加高度限制以适应长摘要 */
+            max-height: 1500px;
             opacity: 1;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
@@ -297,7 +293,6 @@
             color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.7;
-            /* 确保摘要内容也会正确换行 */
             overflow-wrap: break-word; 
         }
         
@@ -306,6 +301,34 @@
             display: block;
             margin-bottom: 0.5rem;
             font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- 新增：项目链接按钮样式 --- */
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.3s;
+        }
+
+        .project-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
         }
 
         /* Footer */
@@ -325,7 +348,6 @@
             .section-title::after { width: 100px; }
             .paper-header { padding: 1.5rem; }
             .paper-abstract { padding: 1.5rem; }
-            /* 移动端稍微减小标题字号，防止过于拥挤 */
             .paper-title { font-size: 1.1rem; }
         }
     </style>
@@ -337,6 +359,7 @@
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -449,8 +472,83 @@
 
     </section>
 
+    <section id="projects">
+        <h3 class="section-title"><span>03.</span>Featured Projects</h3>
+        
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-header-content">
+                    <div class="status-badge" style="color: #4ade80; border-color: #4ade80;">Three.js & AI</div>
+                    <div class="paper-title">Interactive 3D Particle Christmas Tree</div>
+                    <div class="paper-meta">
+                        JavaScript, Three.js, MediaPipe, WebGL
+                    </div>
+                    <p class="paper-short-desc">
+                        A real-time interactive 3D particle system featuring hand gesture control via MediaPipe and a dynamic photo gallery.
+                    </p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="paper-body">
+                <div class="paper-abstract">
+                    <strong>Project Overview:</strong>
+                    This project explores the intersection of computer graphics and computer vision in the browser. It renders a particle-based Christmas tree using <strong>Three.js</strong>, where each particle interacts with a physics system.
+                    <br><br>
+                    <strong>Key Features:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                        <li><strong>Gesture Control:</strong> Integrated MediaPipe Hand Tracking to allow users to rotate and interact with the 3D scene using hand movements in real-time.</li>
+                        <li><strong>Dynamic Particles:</strong> Custom shader materials and particle physics for visual effects.</li>
+                        <li><strong>Photo Wall:</strong> An interactive floating photo gallery embedded within the 3D space.</li>
+                    </ul>
+                    
+                    <div class="project-links">
+                        <a href="https://github.com/DELONG-L/Christmas_Tree" target="_blank" class="project-btn">
+                            <i class="fab fa-github"></i> View Source
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="paper-card">
+            <div class="paper-header">
+                <div class="paper-header-content">
+                    <div class="status-badge" style="color: #60a5fa; border-color: #60a5fa;">XeLaTeX</div>
+                    <div class="paper-title">Normal_Resume: Minimalist XeLaTeX Template</div>
+                    <div class="paper-meta">
+                        TeX, LaTeX Class Design, Typography
+                    </div>
+                    <p class="paper-short-desc">
+                        A clean, single-column résumé template featuring a custom `resume.cls` for consistent typography and compact layout.
+                    </p>
+                </div>
+                <i class="fas fa-chevron-down toggle-icon"></i>
+            </div>
+            <div class="paper-body">
+                <div class="paper-abstract">
+                    <strong>Project Overview:</strong>
+                    Designing a resume that passes ATS (Applicant Tracking Systems) while maintaining high aesthetic standards can be challenging. This project provides a highly customizable <strong>XeLaTeX</strong> template focused on readability and structure.
+                    <br><br>
+                    <strong>Key Features:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                        <li><strong>Custom Class:</strong> A dedicated <code>resume.cls</code> file that encapsulates complex formatting logic, keeping the main <code>.tex</code> file clean.</li>
+                        <li><strong>Helper Macros:</strong> Pre-defined commands for education entries, skill lists, and contact information to ensure consistent vertical rhythm.</li>
+                        <li><strong>Modern Aesthetics:</strong> Uses FontAwesome icons and a flat design language suitable for academic and engineering roles.</li>
+                    </ul>
+
+                    <div class="project-links">
+                        <a href="https://github.com/DELONG-L/Normal_Resume" target="_blank" class="project-btn">
+                            <i class="fab fa-github"></i> View Source
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
     <section id="contact" style="text-align: center; padding-bottom: 10rem;">
-        <h3 class="section-title" style="justify-content: center; margin-bottom: 1rem;"><span>03.</span>What's Next?</h3>
+        <h3 class="section-title" style="justify-content: center; margin-bottom: 1rem;"><span>04.</span>What's Next?</h3>
         <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Get In Touch</h2>
         <p style="max-width: 600px; margin: 0 auto 3rem auto; color: var(--text-secondary);">
             I am always open to discussing new research collaborations, especially regarding LLM security and privacy. Whether you have a question or just want to say hi, my inbox is open!
