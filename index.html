@@ -15,6 +15,9 @@
             --text-secondary: #94a3b8;
             --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.3);
+            /* 状态颜色变量 */
+            --status-accepted: #fbbf24;
+            --status-progress: #60a5fa;
         }
 
         * {
@@ -223,15 +226,24 @@
             min-width: 0; 
         }
 
+        /* 修改：状态标签基础样式 */
         .status-badge {
             display: inline-block;
             font-size: 0.75rem;
-            color: #fbbf24;
             font-family: 'JetBrains Mono', monospace;
-            border: 1px solid #fbbf24;
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
             margin-bottom: 1rem;
+            border: 1px solid var(--status-accepted);
+            color: var(--status-accepted);
+            background: rgba(251, 191, 36, 0.05);
+        }
+
+        /* 新增：In Process 的专属颜色 */
+        .status-badge.in-progress {
+            border-color: var(--status-progress);
+            color: var(--status-progress);
+            background: rgba(96, 165, 250, 0.05);
         }
 
         .paper-title {
@@ -303,7 +315,7 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* --- 新增：项目链接按钮样式 --- */
+        /* 项目链接按钮样式 */
         .project-links {
             margin-top: 1rem;
             display: flex;
@@ -429,7 +441,7 @@
         <div class="paper-card">
             <div class="paper-header">
                 <div class="paper-header-content">
-                    <div class="status-badge">In Process</div>
+                    <div class="status-badge in-progress">In Process</div>
                     <div class="paper-title">A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</div>
                     <div class="paper-meta">
                         <strong>Delong Li</strong>, <strong>Guangsheng Yu</strong>, <strong>Xu Wang</strong>, <strong>Yanna Jiang</strong>, <strong>Wencheng Yang</strong>, <strong>Bin Liang</strong>, <strong>Wei Ni</strong>
@@ -450,8 +462,8 @@
 
         <div class="paper-card">
             <div class="paper-header">
-                 <div class="paper-header-content">
-                    <div class="status-badge">In Process</div>
+                <div class="paper-header-content">
+                    <div class="status-badge in-progress">In Process</div>
                     <div class="paper-title">FedVILA: Federated LoRA-based Unlearning for Large Language Models</div>
                     <div class="paper-meta">
                         <strong>Delong Li</strong>, <strong>Guangsheng Yu</strong>, <strong>Xu Wang</strong>, <strong>Bin Liang</strong> et al.
@@ -478,7 +490,7 @@
         <div class="paper-card">
             <div class="paper-header">
                 <div class="paper-header-content">
-                    <div class="status-badge" style="color: #4ade80; border-color: #4ade80;">Three.js & AI</div>
+                    <div class="status-badge" style="color: #4ade80; border-color: #4ade80; background: rgba(74, 222, 128, 0.05);">Three.js & AI</div>
                     <div class="paper-title">Interactive 3D Particle Christmas Tree</div>
                     <div class="paper-meta">
                         JavaScript, Three.js, MediaPipe, WebGL
@@ -516,7 +528,7 @@
         <div class="paper-card">
             <div class="paper-header">
                 <div class="paper-header-content">
-                    <div class="status-badge" style="color: #60a5fa; border-color: #60a5fa;">XeLaTeX</div>
+                    <div class="status-badge" style="color: #c084fc; border-color: #c084fc; background: rgba(192, 132, 252, 0.05);">XeLaTeX</div>
                     <div class="paper-title">Normal_Resume: Minimalist XeLaTeX Template</div>
                     <div class="paper-meta">
                         TeX, LaTeX Class Design, Typography
