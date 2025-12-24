@@ -6,6 +6,7 @@
     <title>Delong Li | Researcher</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     
     <style>
         :root {
@@ -18,6 +19,7 @@
             /* 状态颜色变量 */
             --status-accepted: #fbbf24;
             --status-progress: #60a5fa;
+            --status-published: #4ade80; /* 新增：已发表状态颜色 */
         }
 
         * {
@@ -226,7 +228,7 @@
             min-width: 0; 
         }
 
-        /* 修改：状态标签基础样式 */
+        /* 状态标签基础样式 */
         .status-badge {
             display: inline-block;
             font-size: 0.75rem;
@@ -239,11 +241,17 @@
             background: rgba(251, 191, 36, 0.05);
         }
 
-        /* 新增：In Process 的专属颜色 */
         .status-badge.in-progress {
             border-color: var(--status-progress);
             color: var(--status-progress);
             background: rgba(96, 165, 250, 0.05);
+        }
+
+        /* 新增：Published 的专属颜色 */
+        .status-badge.published {
+            border-color: var(--status-published);
+            color: var(--status-published);
+            background: rgba(74, 222, 128, 0.05);
         }
 
         .paper-title {
@@ -315,11 +323,12 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* 项目链接按钮样式 */
+        /* 项目链接按钮样式 - 统一颜色 */
         .project-links {
             margin-top: 1rem;
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .project-btn {
@@ -328,8 +337,8 @@
             gap: 0.5rem;
             padding: 0.5rem 1rem;
             background: transparent;
-            border: 1px solid var(--text-secondary);
-            color: var(--text-secondary);
+            border: 1px solid var(--accent);
+            color: var(--accent);
             border-radius: 4px;
             text-decoration: none;
             font-size: 0.9rem;
@@ -338,9 +347,8 @@
         }
 
         .project-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: rgba(56, 189, 248, 0.1);
+            background: var(--accent-glow);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -370,7 +378,7 @@
         <div class="logo">DL.</div>
         <div class="nav-links">
             <a href="#about">About</a>
-            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
@@ -395,7 +403,7 @@
         <h3 class="section-title"><span>01.</span>About Me</h3>
         <div style="max-width: 800px;">
             <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
-                I am currently a Master by Research student at the <strong>University of Technology Sydney (UTS)</strong>, serving as Research Support within the <strong>School of Electrical & Data Engineering</strong>. I am also proud to be a member of the <a href="https://utscyber.com" target="_blank" class="highlight-link">CyberR Lab</a>.
+                I am currently a Master by Research student at the <strong>University of Technology Sydney (UTS)</strong>, serving as Research Support within the <strong>School of Electrical & Data Engineering</strong>. I am also proud to be a member of the <strong>CyberR Lab</strong>.
             </p>
             <p style="margin-bottom: 2rem; color: var(--text-secondary);">
                 My research sits at the intersection of privacy, security, and large language models. I am passionate about making AI systems not only more powerful but also more <strong>auditable, secure, and compliant</strong> with human values.
@@ -412,14 +420,14 @@
         </div>
     </section>
 
-    <section id="research">
-        <h3 class="section-title"><span>02.</span>Selected Works</h3>
+    <section id="publications">
+        <h3 class="section-title"><span>02.</span>Selected Publications</h3>
         <p style="margin-bottom: 2rem; color: var(--text-secondary);">Click on a paper card to view its abstract.</p>
         
         <div class="paper-card">
             <div class="paper-header">
                 <div class="paper-header-content">
-                    <div class="status-badge">Accepted</div>
+                    <div class="status-badge published">Published</div>
                     <div class="paper-title">AuditableLLM: A Hash-Chain-Backed, Compliance-Aware Auditable Framework for Large Language Models</div>
                     <div class="paper-meta">
                         <strong>Delong Li</strong>, <strong>Guangsheng Yu</strong>, <strong>Xu Wang</strong>, <strong>Bin Liang</strong>
@@ -434,6 +442,12 @@
                 <div class="paper-abstract">
                     <strong>Abstract:</strong>
                     Auditability and regulatory compliance are increasingly required for deploying large language models (LLMs). Prior work typically targets isolated stages such as training or unlearning and lacks a unified mechanism for verifiable accountability across model updates. This paper presents AuditableLLM, a lightweight framework that decouples update execution from an audit-and-verification layer and records each update as a hash-chain-backed, tamper-evident audit trail. The framework supports parameter-efficient fine-tuning such as Low-Rank Adaptation (LoRA) and Quantized LoRA (QLoRA), full-parameter optimization, continual learning, and data unlearning, enabling third-party verification without access to model internals or raw logs. Experiments on LLaMA-family models with LoRA adapters and the MovieLens dataset show negligible utility degradation (below 0.2% in accuracy and macro-F1) with modest overhead (3.4 ms/step; 5.7% slowdown) and sub-second audit validation in the evaluated setting. Under a simple loss-based membership inference attack on the forget set, the audit layer does not increase membership leakage relative to the underlying unlearning algorithm. Overall, the results indicate that hash-chain-backed audit logging can be integrated into practical LLM adaptation, update, and unlearning workflows with low overhead and verifiable integrity.
+                    
+                    <div class="project-links">
+                        <a href="https://doi.org/10.3390/electronics15010056" target="_blank" class="project-btn">
+                            <i class="ai ai-doi"></i> Electronics
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -456,6 +470,12 @@
                 <div class="paper-abstract">
                     <strong>Abstract:</strong>
                     Machine unlearning is becoming a practical requirement for deploying large language models (LLMs) under privacy, safety, and compliance constraints. In parallel, modern adaptation pipelines increasingly rely on parameter-efficient fine-tuning (PEFT), where a frozen backbone is paired with lightweight trainable modules such as Low-Rank Adaptation (LoRA). This survey reviews LoRA-based machine unlearning for LLMs, focusing on adapter-centric settings in which forgetting is achieved by operating primarily in PEFT module space rather than updating the full model. We formalize the LoRA unlearning problem under a frozen base model and present a taxonomy of existing methods, including gradient-based objectives, influence- and Fisher-informed updates, structural and continual-unlearning schemes, bounded-dynamics approaches, and pruning-enhanced variants. To relate these families, we introduce a unified adapter-space view that expresses seemingly disparate techniques as instances of a common update operator over adapter parameters. We further summarize evaluation protocols, metrics, and practical assumptions used in prior work, and provide a worked Task Of Fictitious Unlearning (TOFU) case study to illustrate utility–forgetting trade-offs across representative categories. Finally, we highlight open challenges such as repeated deletion requests, constrained data-access settings, federated or split-adapter deployments, and integration with auditing and compliance workflows.
+                    
+                    <div class="project-links">
+                        <a href="http://dx.doi.org/10.2139/ssrn.5866522" target="_blank" class="project-btn">
+                            <i class="ai ai-doi"></i> SSRN (Preprint)
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -573,7 +593,7 @@
         <div style="margin-top: 3rem; font-size: 1.5rem;">
             <a href="https://github.com/DELONG-L" target="_blank" style="color: var(--text-secondary); margin: 0 10px; transition: color 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='#94a3b8'"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/delong-li-144941353" target="_blank" style="color: var(--text-secondary); margin: 0 10px; transition: color 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='#94a3b8'"><i class="fab fa-linkedin"></i></a>
-            <a href="https://orcid.org/0009-0000-8648-8921" style="color: var(--text-secondary); margin: 0 10px; transition: color 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='#94a3b8'"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0009-0000-8648-8921" target="_blank" style="color: var(--text-secondary); margin: 0 10px; transition: color 0.3s;" onmouseover="this.style.color='#a6ce39'" onmouseout="this.style.color='#94a3b8'"><i class="ai ai-orcid"></i></a>
         </div>
     </section>
 
@@ -583,7 +603,6 @@
     </footer>
 
     <script>
-        // 简单的打字机效果脚本
         const text = "Hi, I am Delong Li";
         const typingElement = document.querySelector('.typing-cursor');
         let index = 0;
@@ -596,13 +615,11 @@
             }
         }
         
-        // 页面加载完成后开始打字
         window.onload = () => {
             typingElement.textContent = "";
             setTimeout(type, 500);
         };
 
-        // Accordion functionality for papers
         document.querySelectorAll('.paper-header').forEach(header => {
             header.addEventListener('click', () => {
                 const card = header.parentElement;
