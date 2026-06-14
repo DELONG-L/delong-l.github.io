@@ -90,39 +90,6 @@ pre {
   font-weight: 600;
 }
 
-.brand-mark {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at center, var(--ink) 0 28%, transparent 30%),
-    conic-gradient(from 0deg,
-      var(--ink) 0deg 12deg,
-      transparent 12deg 30deg,
-      var(--ink) 30deg 42deg,
-      transparent 42deg 60deg,
-      var(--ink) 60deg 72deg,
-      transparent 72deg 90deg,
-      var(--ink) 90deg 102deg,
-      transparent 102deg 120deg,
-      var(--ink) 120deg 132deg,
-      transparent 132deg 150deg,
-      var(--ink) 150deg 162deg,
-      transparent 162deg 180deg,
-      var(--ink) 180deg 192deg,
-      transparent 192deg 210deg,
-      var(--ink) 210deg 222deg,
-      transparent 222deg 240deg,
-      var(--ink) 240deg 252deg,
-      transparent 252deg 270deg,
-      var(--ink) 270deg 282deg,
-      transparent 282deg 300deg,
-      var(--ink) 300deg 312deg,
-      transparent 312deg 330deg,
-      var(--ink) 330deg 342deg,
-      transparent 342deg 360deg);
-}
-
 .nav-scroll {
   display: flex;
   gap: 1rem;
