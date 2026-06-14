@@ -148,85 +148,112 @@
     </section>
 
     <section id="framework" class="section">
-      <div class="shell split-layout">
-        <div class="text-stack">
-          <div class="section-heading">
-            <p class="kicker">Framework</p>
-            <h2>What counts as an agentic skill</h2>
-          </div>
-
-          <article class="equation-card">
-            <span class="equation-label">Formalization</span>
-            <code>S = (C, pi, T, R)</code>
-            <p>
-              Applicability condition, executable policy, termination condition, and reusable callable interface.
-            </p>
-          </article>
-
-          <div class="pill-list">
-            <span>Executable</span>
-            <span>Reusable</span>
-            <span>Composable</span>
-            <span>Governable</span>
-          </div>
-
-          <div class="prose">
-            <p>
-              The paper positions skills between tools, plans, memory, and prompt templates. Tools are atomic calls.
-              Plans are one-off reasoning scaffolds. Memory stores observations. Skills are reusable procedural modules
-              that can be invoked again under recurring conditions.
-            </p>
-            <p>
-              That distinction matters because it shifts the question from single-turn tool use to durable procedural
-              knowledge that can be retrieved, verified, and maintained like infrastructure.
-            </p>
-          </div>
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">Framework</p>
+          <h2>What counts as an agentic skill</h2>
+          <p class="section-note">
+            The paper separates reusable skills from one-off plans, tool calls, and memory records by treating each skill as a bounded procedural module.
+          </p>
         </div>
 
-        <figure class="media-card">
-          <img src="assets/skill-anatomy.png" alt="Internal anatomy of an agentic skill">
-          <figcaption>
-            The anatomy view used throughout the paper: applicability, policy, termination, and interface.
-          </figcaption>
-        </figure>
+        <div class="framework-layout">
+          <figure class="media-card figure-focus">
+            <img src="assets/skill-anatomy.png" alt="Internal anatomy of an agentic skill">
+            <figcaption>
+              The anatomy view used throughout the paper: applicability, policy, termination, and interface.
+            </figcaption>
+          </figure>
+
+          <div class="framework-copy">
+            <article class="equation-card">
+              <span class="equation-label">Formalization</span>
+              <code>S = (C, pi, T, R)</code>
+              <p>
+                Applicability condition, executable policy, termination condition, and reusable callable interface.
+              </p>
+            </article>
+
+            <div class="definition-grid">
+              <article class="definition-card">
+                <span>C</span>
+                <h3>When to invoke</h3>
+                <p>The applicability condition decides whether a skill belongs in the current task context.</p>
+              </article>
+              <article class="definition-card">
+                <span>pi</span>
+                <h3>How to execute</h3>
+                <p>The policy may be natural language, code, a workflow, or a hybrid package.</p>
+              </article>
+              <article class="definition-card">
+                <span>T</span>
+                <h3>When to stop</h3>
+                <p>The termination rule makes the skill auditable instead of open-ended prompting.</p>
+              </article>
+              <article class="definition-card">
+                <span>R</span>
+                <h3>How to reuse</h3>
+                <p>The interface exposes the skill as a callable artifact that can be routed and composed.</p>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="lifecycle" class="section band-soft">
-      <div class="shell split-layout">
-        <figure class="media-card">
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">Lifecycle</p>
+          <h2>Skills are treated as evolving system components</h2>
+          <p class="section-note">
+            The lifecycle view is the operational core of the survey: skills are acquired, stored, executed, evaluated, and revised as durable system assets.
+          </p>
+        </div>
+
+        <div class="lifecycle-layout">
+          <figure class="media-card figure-focus">
           <img src="assets/skill-lifecycle.png" alt="Agentic skill lifecycle diagram">
           <figcaption>
             The lifecycle model connects discovery, refinement, distillation, storage, composition, execution, and update.
           </figcaption>
-        </figure>
+          </figure>
 
-        <div class="text-stack">
-          <div class="section-heading">
-            <p class="kicker">Lifecycle</p>
-            <h2>Skills are treated as evolving system components</h2>
-          </div>
-
-          <div class="timeline-card">
+          <div class="timeline-card step-list">
             <article>
-              <h3>Discovery</h3>
-              <p>Identify recurring task patterns, bottlenecks, or failure modes worth encapsulating.</p>
+              <span class="step-index">01</span>
+              <div>
+                <h3>Discovery</h3>
+                <p>Identify recurring task patterns, bottlenecks, or failure modes worth encapsulating.</p>
+              </div>
             </article>
             <article>
-              <h3>Practice and refinement</h3>
-              <p>Improve candidate procedures through execution feedback, reflection, or external supervision.</p>
+              <span class="step-index">02</span>
+              <div>
+                <h3>Practice and refinement</h3>
+                <p>Improve candidate procedures through execution feedback, reflection, or external supervision.</p>
+              </div>
             </article>
             <article>
-              <h3>Distillation</h3>
-              <p>Compress successful trajectories into a reusable procedural artifact with explicit boundaries.</p>
+              <span class="step-index">03</span>
+              <div>
+                <h3>Distillation</h3>
+                <p>Compress successful trajectories into a reusable procedural artifact with explicit boundaries.</p>
+              </div>
             </article>
             <article>
-              <h3>Storage and retrieval</h3>
-              <p>Index skills, manage versions, and route the right skill into the right runtime context.</p>
+              <span class="step-index">04</span>
+              <div>
+                <h3>Storage and retrieval</h3>
+                <p>Index skills, manage versions, and route the right skill into the right runtime context.</p>
+              </div>
             </article>
             <article>
-              <h3>Execution and update</h3>
-              <p>Run within permission boundaries, then regress, refine, or retire based on evidence.</p>
+              <span class="step-index">05</span>
+              <div>
+                <h3>Execution and update</h3>
+                <p>Run within permission boundaries, then regress, refine, or retire based on evidence.</p>
+              </div>
             </article>
           </div>
         </div>
@@ -250,41 +277,26 @@
           </figcaption>
         </figure>
 
-        <div class="card-grid four-up">
-          <article class="pattern-card">
+        <div class="pattern-lenses">
+          <article class="pattern-card pattern-lens">
             <span class="pattern-tag">P1</span>
-            <h3>Metadata-driven disclosure</h3>
-            <p>Load compact metadata first, and only expand the full skill when it is selected.</p>
+            <h3>Disclosure and selection</h3>
+            <p>Metadata-driven disclosure keeps context small while making skill selection explicit.</p>
           </article>
-          <article class="pattern-card">
-            <span class="pattern-tag">P2</span>
-            <h3>Code-as-skill</h3>
-            <p>Represent skills as executable procedures with deterministic behavior.</p>
+          <article class="pattern-card pattern-lens">
+            <span class="pattern-tag">P2-P3</span>
+            <h3>Executable control</h3>
+            <p>Code-as-skill and workflow enforcement turn reusable procedures into testable runtime behavior.</p>
           </article>
-          <article class="pattern-card">
-            <span class="pattern-tag">P3</span>
-            <h3>Workflow enforcement</h3>
-            <p>Constrain agent behavior through hard-gated methods and ordered recovery flow.</p>
+          <article class="pattern-card pattern-lens">
+            <span class="pattern-tag">P4-P6</span>
+            <h3>Self-improving skill systems</h3>
+            <p>Self-evolving libraries, hybrid packages, and meta-skills move skill management into the agent loop.</p>
           </article>
-          <article class="pattern-card">
-            <span class="pattern-tag">P4</span>
-            <h3>Self-evolving libraries</h3>
-            <p>Absorb successful trajectories back into the library as new or revised skills.</p>
-          </article>
-          <article class="pattern-card">
-            <span class="pattern-tag">P5</span>
-            <h3>Hybrid NL + code skills</h3>
-            <p>Combine human-readable instructions with scripts, tools, and references.</p>
-          </article>
-          <article class="pattern-card">
-            <span class="pattern-tag">P6</span>
-            <h3>Meta-skills</h3>
-            <p>Use one skill to author, modify, or orchestrate other skills.</p>
-          </article>
-          <article class="pattern-card">
+          <article class="pattern-card pattern-lens">
             <span class="pattern-tag">P7</span>
-            <h3>Marketplace distribution</h3>
-            <p>Publish portable skill packages that scale reuse and expand the supply-chain surface.</p>
+            <h3>Distribution and governance</h3>
+            <p>Marketplace distribution expands reuse, but also turns skills into a supply-chain security surface.</p>
           </article>
         </div>
 
@@ -416,13 +428,6 @@
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="shell footer-row">
-      <p>Static project page for the arXiv version of the paper.</p>
-      <p>Prepared as a GitHub Pages-friendly public package with only web assets and the PDF.</p>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>

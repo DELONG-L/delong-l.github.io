@@ -86,6 +86,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 84px;
         }
 
         body {
@@ -260,28 +261,13 @@
             padding: 16px 18px;
             border-bottom: 1px solid rgba(250, 249, 245, 0.08);
             color: var(--on-dark-soft);
-            font-family: "JetBrains Mono", monospace;
-            font-size: 12px;
+            font-size: 13px;
+            font-weight: 600;
         }
 
-        .panel-lights {
-            display: flex;
-            gap: 7px;
-        }
-
-        .panel-lights span {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-
-        .panel-lights span:nth-child(2) {
-            background: var(--accent-amber);
-        }
-
-        .panel-lights span:nth-child(3) {
-            background: var(--accent-teal);
+        .panel-topbar strong {
+            color: var(--on-dark);
+            font-size: 13px;
         }
 
         .signal-body {
@@ -518,7 +504,7 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: minmax(0, 1fr);
             gap: 18px;
         }
 
@@ -726,12 +712,8 @@
 
             <aside class="signal-panel" aria-label="Research profile">
                 <div class="panel-topbar">
-                    <div class="panel-lights" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <span>research-profile.json</span>
+                    <span>Research snapshot</span>
+                    <strong>Trustworthy AI systems</strong>
                 </div>
                 <div class="signal-body">
                     <p class="signal-title">Research agenda: trustworthy adaptation, privacy-preserving inference, and secure agentic systems.</p>
@@ -863,27 +845,17 @@
             <div class="section-inner">
                 <div class="section-heading">
                     <h2>Projects and research artifacts.</h2>
-                    <p>Reusable tools and public-facing artifacts that package methods, workflows, and visual explanations beyond the paper PDF.</p>
+                    <p>Reusable research tooling that packages methods and workflows for others to apply.</p>
                 </div>
 
                 <div class="project-grid">
                     <article class="project-card">
-                        <p class="project-kicker">Open-source skill</p>
-                        <h3>arXiv Paper Page Skill</h3>
-                        <p>A reusable Codex skill that scaffolds static GitHub Pages project sites from arXiv papers while keeping public deliverables separate from authoring materials.</p>
+                        <p class="project-kicker">Codex skill</p>
+                        <h3>ArXiv Paper Page Skill</h3>
+                        <p>A reusable Codex skill that scaffolds static GitHub Pages project sites from arXiv papers while keeping public deliverables separate from authoring materials. The SoK page is maintained as a live example of the skill output.</p>
                         <div class="project-links">
                             <a class="paper-link primary" href="https://github.com/DELONG-L/arxiv-paper-page-skill" target="_blank" rel="noopener">GitHub repo</a>
                             <a class="paper-link" href="papers/agentic-skills/">Live example</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <p class="project-kicker">Paper companion</p>
-                        <h3>Visual survey page for agentic skills</h3>
-                        <p>A readable companion page for the SoK on agentic skills, designed to surface the lifecycle, taxonomy, and governance results more clearly than the PDF alone.</p>
-                        <div class="project-links">
-                            <a class="paper-link primary" href="papers/agentic-skills/">Open page</a>
-                            <a class="paper-link" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">arXiv</a>
                         </div>
                     </article>
                 </div>
