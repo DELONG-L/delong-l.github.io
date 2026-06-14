@@ -25,21 +25,61 @@ for (const section of sections) {
 
 const copyButton = document.querySelector("#copy-citation");
 const citationBlock = document.querySelector("#citation-block");
+const isChinese = document.documentElement.lang.toLowerCase().startsWith("zh");
+
+function setCopyButtonLabel(label) {
+  if (!copyButton) return;
+  const defaultLabel = copyButton.dataset.defaultLabel || copyButton.textContent;
+  copyButton.dataset.defaultLabel = defaultLabel;
+  copyButton.textContent = label;
+  setTimeout(() => {
+    copyButton.textContent = defaultLabel;
+  }, 1400);
+}
+
+function fallbackCopyText(text) {
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  textarea.style.pointerEvents = "none";
+  document.body.appendChild(textarea);
+  textarea.select();
+  textarea.setSelectionRange(0, textarea.value.length);
+
+  let copied = false;
+  try {
+    copied = document.execCommand("copy");
+  } catch {
+    copied = false;
+  }
+
+  document.body.removeChild(textarea);
+  return copied;
+}
+
+async function copyCitationText(text) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      return fallbackCopyText(text);
+    }
+  }
+
+  return fallbackCopyText(text);
+}
 
 if (copyButton && citationBlock) {
   copyButton.addEventListener("click", async () => {
+    const citationText = citationBlock.textContent.trim();
     try {
-      await navigator.clipboard.writeText(citationBlock.textContent.trim());
-      const previous = copyButton.textContent;
-      copyButton.textContent = "Copied";
-      setTimeout(() => {
-        copyButton.textContent = previous;
-      }, 1400);
+      const copied = await copyCitationText(citationText);
+      setCopyButtonLabel(copied ? (isChinese ? "已复制" : "Copied") : (isChinese ? "复制失败" : "Copy failed"));
     } catch {
-      copyButton.textContent = "Copy failed";
-      setTimeout(() => {
-        copyButton.textContent = "Copy BibTeX";
-      }, 1400);
+      setCopyButtonLabel(isChinese ? "复制失败" : "Copy failed");
     }
   });
 }

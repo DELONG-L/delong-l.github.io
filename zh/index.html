@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="sd3RNzgaWNnTUcJwwSt1zjI5d5efvwR_MrtPcQY10F0">
-    <title>Delong Li | Trustworthy AI Researcher</title>
+    <title>李德龙 | 可信 AI 研究者</title>
 
-    <meta name="description" content="Delong Li is a PhD student at the University of Technology Sydney researching machine unlearning, AI security, privacy-aware inference, and trustworthy AI systems.">
-    <link rel="canonical" href="https://delong-l.github.io/">
+    <meta name="description" content="李德龙是悉尼科技大学博士研究生，研究机器遗忘、智能体安全、隐私保护推理与可信 AI 系统。">
+    <link rel="canonical" href="https://delong-l.github.io/zh/">
     <link rel="alternate" hreflang="en" href="https://delong-l.github.io/">
     <link rel="alternate" hreflang="zh-CN" href="https://delong-l.github.io/zh/">
     <link rel="alternate" hreflang="x-default" href="https://delong-l.github.io/">
     <meta name="robots" content="index,follow,max-image-preview:large">
 
-    <meta property="og:title" content="Delong Li | Trustworthy AI Researcher">
-    <meta property="og:description" content="Research homepage for Delong Li: machine unlearning, AI security, agentic systems, and privacy-aware edge-cloud inference.">
-    <meta property="og:url" content="https://delong-l.github.io/">
+    <meta property="og:title" content="李德龙 | 可信 AI 研究者">
+    <meta property="og:description" content="李德龙的研究主页，聚焦机器遗忘、智能体安全、隐私保护推理与可信 AI 系统。">
+    <meta property="og:url" content="https://delong-l.github.io/zh/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Delong Li">
+    <meta property="og:site_name" content="李德龙">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Delong Li | Trustworthy AI Researcher">
-    <meta name="twitter:description" content="Machine unlearning, AI security, agentic systems, and privacy-aware edge-cloud inference.">
+    <meta name="twitter:title" content="李德龙 | 可信 AI 研究者">
+    <meta name="twitter:description" content="机器遗忘、智能体安全、隐私保护推理与可信 AI 系统。">
 
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Delong Li",
-        "url": "https://delong-l.github.io/",
+        "name": "李德龙",
+        "alternateName": "Delong Li",
+        "url": "https://delong-l.github.io/zh/",
         "affiliation": {
             "@type": "Organization",
             "name": "University of Technology Sydney"
@@ -50,12 +51,11 @@
     }
     </script>
 
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
@@ -77,8 +77,6 @@
             --surface-dark-elevated: #252320;
             --on-dark: #faf9f5;
             --on-dark-soft: #a09d96;
-            --accent-teal: #4f9f91;
-            --accent-amber: #d89443;
             --radius: 8px;
             --content: 1120px;
         }
@@ -94,14 +92,14 @@
 
         body {
             margin: 0;
-            font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+            font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
             color: var(--ink);
             background:
                 linear-gradient(90deg, rgba(20, 20, 19, 0.035) 1px, transparent 1px),
                 linear-gradient(180deg, rgba(20, 20, 19, 0.03) 1px, transparent 1px),
                 var(--canvas);
             background-size: 42px 42px;
-            line-height: 1.55;
+            line-height: 1.68;
         }
 
         a {
@@ -139,7 +137,7 @@
             width: 28px;
             height: 28px;
             border-radius: 8px;
-            background: url("logo.svg") center / contain no-repeat;
+            background: url("/logo.svg") center / contain no-repeat;
             box-shadow: 0 0 0 1px rgba(20, 20, 19, 0.08);
         }
 
@@ -208,20 +206,18 @@
 
         .eyebrow {
             margin: 0 0 18px;
-            font-family: "JetBrains Mono", monospace;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary-active);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.08em;
         }
 
         h1,
         h2,
         h3 {
-            font-family: Georgia, "Times New Roman", serif;
-            font-weight: 400;
-            letter-spacing: 0;
+            font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
         }
 
         h1 {
@@ -235,7 +231,8 @@
             max-width: 680px;
             margin: 26px 0 0;
             color: var(--body);
-            font-size: 19px;
+            font-size: 18px;
+            line-height: 1.82;
         }
 
         .hero-actions {
@@ -310,9 +307,9 @@
 
         .signal-title {
             margin: 0 0 20px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 30px;
-            line-height: 1.12;
+            font-family: "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+            font-size: 28px;
+            line-height: 1.32;
         }
 
         .signal-grid {
@@ -330,8 +327,7 @@
 
         .signal-row span {
             color: var(--on-dark-soft);
-            font-family: "JetBrains Mono", monospace;
-            font-size: 12px;
+            font-size: 13px;
         }
 
         .signal-row strong {
@@ -358,20 +354,21 @@
             display: grid;
             grid-template-columns: minmax(0, 0.7fr) minmax(260px, 0.3fr);
             gap: 48px;
-            align-items: end;
+            align-items: start;
             margin-bottom: 42px;
         }
 
         .section-heading h2 {
             margin: 0;
-            font-size: 56px;
-            line-height: 1.06;
+            font-size: 50px;
+            line-height: 1.14;
         }
 
         .section-heading p {
             margin: 0;
             color: var(--muted);
             font-size: 16px;
+            line-height: 1.78;
         }
 
         .about-grid {
@@ -389,7 +386,8 @@
         .text-block p {
             margin: 0;
             color: var(--body);
-            font-size: 19px;
+            font-size: 18px;
+            line-height: 1.84;
         }
 
         .tag-list {
@@ -446,7 +444,7 @@
         }
 
         .paper-year {
-            font-family: "JetBrains Mono", monospace;
+            font-family: ui-monospace, monospace;
             color: var(--primary-active);
             font-size: 13px;
             font-weight: 600;
@@ -460,8 +458,8 @@
 
         .paper-card h3 {
             margin: 0;
-            font-size: 26px;
-            line-height: 1.18;
+            font-size: 24px;
+            line-height: 1.28;
         }
 
         .authors {
@@ -474,6 +472,7 @@
             margin: 14px 0 0;
             color: var(--body);
             font-size: 15px;
+            line-height: 1.76;
         }
 
         .paper-links {
@@ -551,12 +550,11 @@
 
         .project-kicker {
             margin: 0 0 12px;
-            font-family: "JetBrains Mono", monospace;
+            font-family: inherit;
             color: var(--primary-active);
             font-size: 12px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
+            letter-spacing: 0.08em;
         }
 
         .project-card h3 {
@@ -569,6 +567,7 @@
             margin: 14px 0 0;
             color: var(--body);
             font-size: 15px;
+            line-height: 1.8;
         }
 
         .project-links {
@@ -709,22 +708,22 @@
     </style>
 </head>
 <body>
-    <nav class="site-nav" aria-label="Primary navigation">
+    <nav class="site-nav" aria-label="主导航">
         <div class="nav-inner">
-            <a class="brand" href="#top" aria-label="Delong Li homepage">
+            <a class="brand" href="#top" aria-label="李德龙主页">
                 <span class="brand-mark" aria-hidden="true"></span>
-                <span>Delong Li</span>
+                <span>李德龙</span>
             </a>
             <div class="nav-side">
                 <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#publications">Publications</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
+                    <a href="#about">研究</a>
+                    <a href="#publications">论文</a>
+                    <a href="#projects">项目</a>
+                    <a href="#contact">联系</a>
                 </div>
-                <div class="lang-switch" aria-label="Language switch">
-                    <a class="lang-link active" href="/">EN</a>
-                    <a class="lang-link" href="/zh/">中文</a>
+                <div class="lang-switch" aria-label="语言切换">
+                    <a class="lang-link" href="/">EN</a>
+                    <a class="lang-link active" href="/zh/">中文</a>
                 </div>
             </div>
         </div>
@@ -733,42 +732,42 @@
     <main id="top">
         <section class="hero" aria-labelledby="hero-title">
             <div>
-                <p class="eyebrow">PhD Researcher · UTS CybeR Lab · Trustworthy AI</p>
-                <h1 id="hero-title">Delong Li</h1>
+                <p class="eyebrow">博士研究生 · UTS CybeR Lab · 可信 AI</p>
+                <h1 id="hero-title">李德龙</h1>
                 <p class="hero-copy">
-                    I study machine unlearning, agentic AI security, and privacy-aware inference, with a focus on making adaptive AI systems more auditable, governable, and empirically trustworthy.
+                    我主要研究机器遗忘、智能体安全与隐私保护推理，关注 AI 系统在更新、约束与部署过程中如何做到可审计、可治理与可验证。
                 </p>
                 <div class="hero-actions">
                     <a class="button button-primary" href="#publications">
                         <i class="fas fa-book-open" aria-hidden="true"></i>
-                        Selected papers
+                        代表论文
                     </a>
                     <a class="button button-secondary" href="https://scholar.google.com/citations?user=hItKYpwAAAAJ" target="_blank" rel="noopener">
                         <i class="ai ai-google-scholar" aria-hidden="true"></i>
-                        Scholar profile
+                        Google Scholar
                     </a>
                 </div>
             </div>
 
-            <aside class="signal-panel" aria-label="Research profile">
+            <aside class="signal-panel" aria-label="研究概览">
                 <div class="panel-topbar">
-                    <span>Research snapshot</span>
-                    <strong>Trustworthy AI systems</strong>
+                    <span>研究概览</span>
+                    <strong>可信 AI 系统</strong>
                 </div>
                 <div class="signal-body">
-                    <p class="signal-title">Research agenda: trustworthy adaptation, privacy-preserving inference, and secure agentic systems.</p>
+                    <p class="signal-title">研究主线：机器遗忘、可信智能体与隐私保护推理。</p>
                     <div class="signal-grid">
                         <div class="signal-row">
-                            <span>Affiliation</span>
-                            <strong>School of Electrical & Data Engineering, UTS</strong>
+                            <span>机构</span>
+                            <strong>UTS School of Electrical &amp; Data Engineering</strong>
                         </div>
                         <div class="signal-row">
-                            <span>Current role</span>
-                            <strong>PhD student · UTS CybeR Lab</strong>
+                            <span>当前身份</span>
+                            <strong>博士研究生 · UTS CybeR Lab</strong>
                         </div>
                         <div class="signal-row">
-                            <span>Research axes</span>
-                            <strong>Unlearning, LLM agents, auditability, edge-cloud privacy</strong>
+                            <span>研究方向</span>
+                            <strong>机器遗忘、智能体系统、可审计 AI、隐私保护推理</strong>
                         </div>
                     </div>
                 </div>
@@ -778,22 +777,22 @@
         <section class="section alt" id="about">
             <div class="section-inner">
                 <div class="section-heading">
-                    <h2>Research agenda and technical focus.</h2>
-                    <p>I work on how AI systems can be updated, forgotten, audited, and deployed under real privacy, security, and governance constraints.</p>
+                    <h2>研究方向与技术重点</h2>
+                    <p>我关注 AI 系统如何在真实世界的隐私、安全与治理约束下被更新、被遗忘、被审计，并最终安全部署。</p>
                 </div>
                 <div class="about-grid">
                     <div class="text-block">
                         <p>
-                            I am currently a PhD student at the University of Technology Sydney and a member of UTS CybeR Lab. My research connects machine unlearning, LLM security, federated and edge inference, evaluation methodology, and agentic AI governance, with an emphasis on systems that can be verified and responsibly operated.
+                            我目前在悉尼科技大学攻读博士学位，是 UTS CybeR Lab 成员。研究聚焦机器遗忘、LLM 安全、联邦与边缘推理、评测方法以及智能体治理，目标是构建能够被验证、被审计并可负责任运行的 AI 系统。
                         </p>
                     </div>
-                    <div class="tag-list" aria-label="Research interests">
-                        <span class="tag">Machine Unlearning</span>
-                        <span class="tag">AI Security</span>
-                        <span class="tag">Federated Learning</span>
-                        <span class="tag">Privacy-Aware Inference</span>
-                        <span class="tag">LLM Agents</span>
-                        <span class="tag">Auditable AI</span>
+                    <div class="tag-list" aria-label="研究兴趣">
+                        <span class="tag">机器遗忘</span>
+                        <span class="tag">智能体安全</span>
+                        <span class="tag">联邦学习</span>
+                        <span class="tag">隐私保护推理</span>
+                        <span class="tag">LLM 智能体</span>
+                        <span class="tag">可审计 AI</span>
                     </div>
                 </div>
             </div>
@@ -802,24 +801,24 @@
         <section class="section" id="publications">
             <div class="section-inner">
                 <div class="section-heading">
-                    <h2>Selected publications.</h2>
-                    <p>Recent papers across agentic systems, auditable LLM updates, privacy-aware edge-cloud inference, and machine unlearning.</p>
+                    <h2>代表性论文</h2>
+                    <p>近期工作主要围绕智能体系统、可审计的大模型更新、隐私保护的边云推理与机器遗忘。</p>
                 </div>
 
                 <div class="publication-list">
                     <article class="paper-card">
                         <div class="paper-meta">
                             <span class="paper-year">2026</span>
-                            <span class="paper-venue">arXiv preprint</span>
+                            <span class="paper-venue">arXiv 预印本</span>
                         </div>
                         <div>
                             <h3>SoK: Agentic Skills -- Beyond Tool Use in LLM Agents</h3>
                             <p class="authors">Yanna Jiang, <strong>Delong Li</strong>, Haiyu Deng, Baihe Ma, Xu Wang, Qin Wang, Guangsheng Yu</p>
-                            <p class="paper-summary">A systematization of agentic skills across their lifecycle, with taxonomies for skill packaging, representation, execution scope, evaluation, and governance risk.</p>
+                            <p class="paper-summary">系统梳理智能体技能模块（agentic skills）的完整生命周期，并从封装方式、表示形态、执行范围、评测框架和治理风险等维度给出统一视角。</p>
                         </div>
                         <div class="paper-links">
                             <a class="paper-link primary" href="papers/agentic-skills/">
-                                Visual page
+                                可视化页面
                             </a>
                             <a class="paper-link" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">
                                 arXiv
@@ -835,11 +834,11 @@
                         <div>
                             <h3>AuditableLLM: A Hash-Chain-Backed, Compliance-Aware Auditable Framework for Large Language Models</h3>
                             <p class="authors"><strong>Delong Li</strong>, Guangsheng Yu, Xu Wang, Bin Liang</p>
-                            <p class="paper-summary">A lightweight audit layer for LLM adaptation and unlearning that records tamper-evident update trails while supporting third-party verification.</p>
+                            <p class="paper-summary">提出面向大模型适配与遗忘的轻量级审计框架，以哈希链记录更新过程，支持第三方核验与合规追踪。</p>
                         </div>
                         <div class="paper-links">
                             <a class="paper-link" href="https://www.mdpi.com/2079-9292/15/1/56" target="_blank" rel="noopener">
-                                Publisher
+                                期刊页
                             </a>
                         </div>
                     </article>
@@ -852,11 +851,11 @@
                         <div>
                             <h3>Semantic Neighbor Swapping for Privacy-Aware Edge-Cloud Inference</h3>
                             <p class="authors"><strong>Delong Li</strong>, Baihe Ma, Yanna Jiang, Chen Li, Xuelei Qi, Xu Wang, Feifan Wang, Bin Liang, Guangsheng Yu</p>
-                            <p class="paper-summary">A post-hoc embedding replacement method that reduces identity leakage in edge-cloud inference while preserving task utility under fixed communication cost.</p>
+                            <p class="paper-summary">提出一种后处理嵌入替换方法，在固定通信开销下缓解边云协同推理中的身份泄露，同时尽量保持任务性能。</p>
                         </div>
                         <div class="paper-links">
                             <a class="paper-link" href="https://link.springer.com/article/10.1186/s13677-026-00916-3" target="_blank" rel="noopener">
-                                Publisher
+                                期刊页
                             </a>
                         </div>
                     </article>
@@ -864,12 +863,12 @@
                     <article class="paper-card">
                         <div class="paper-meta">
                             <span class="paper-year">2025</span>
-                            <span class="paper-venue">SSRN preprint</span>
+                            <span class="paper-venue">SSRN 预印本</span>
                         </div>
                         <div>
                             <h3>A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</h3>
                             <p class="authors"><strong>Delong Li</strong>, Guangsheng Yu, Xu Wang, Yanna Jiang, Wencheng Yang, Bin Liang, Wei Ni</p>
-                            <p class="paper-summary">A survey of adapter-centric machine unlearning for LLMs, organizing methods through a unified adapter-space taxonomy and evaluation view.</p>
+                            <p class="paper-summary">综述基于 LoRA 的 LLM 机器遗忘方法，从统一的适配器空间分类框架与评测视角梳理现有工作。</p>
                         </div>
                         <div class="paper-links">
                             <a class="paper-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522" target="_blank" rel="noopener">
@@ -884,18 +883,18 @@
         <section class="section alt" id="projects">
             <div class="section-inner">
                 <div class="section-heading">
-                    <h2>Projects and research artifacts.</h2>
-                    <p>Reusable research tooling that packages methods and workflows for others to apply.</p>
+                    <h2>项目与研究资产</h2>
+                    <p>沉淀可复用的研究工具、流程封装与公开交付物，便于团队直接采用。</p>
                 </div>
 
                 <div class="project-grid">
                     <article class="project-card">
-                        <p class="project-kicker">Codex skill</p>
+                        <p class="project-kicker">Codex 技能</p>
                         <h3>ArXiv Paper Page Skill</h3>
-                        <p>A reusable Codex skill that scaffolds static GitHub Pages project sites from arXiv papers while keeping public deliverables separate from authoring materials. The SoK page is maintained as a live example of the skill output.</p>
+                        <p>一个面向研究团队复用的 Codex 技能，用于从 arXiv 论文生成可直接部署到 GitHub Pages 的静态论文页，并将公开展示页与写作材料解耦。当前 SoK 页面是它的在线示例。</p>
                         <div class="project-links">
-                            <a class="paper-link primary" href="https://github.com/DELONG-L/arxiv-paper-page-skill" target="_blank" rel="noopener">GitHub repo</a>
-                            <a class="paper-link" href="papers/agentic-skills/">Live example</a>
+                            <a class="paper-link primary" href="https://github.com/DELONG-L/arxiv-paper-page-skill" target="_blank" rel="noopener">GitHub 仓库</a>
+                            <a class="paper-link" href="papers/agentic-skills/">在线示例</a>
                         </div>
                     </article>
                 </div>
@@ -906,11 +905,11 @@
             <div class="section-inner">
                 <div class="contact-band">
                     <div>
-                        <h2>Get in touch.</h2>
-                        <p>I am open to research discussions and collaborations around LLM security, machine unlearning, privacy, and auditable AI systems.</p>
+                        <h2>联系我</h2>
+                        <p>欢迎就机器遗忘、LLM 安全、隐私保护推理和可审计 AI 系统交流或合作。</p>
                     </div>
-                    <div class="socials" aria-label="Contact links">
-                        <a class="icon-link" href="mailto:delong.li-1@student.uts.edu.au" aria-label="Email Delong Li">
+                    <div class="socials" aria-label="联系链接">
+                        <a class="icon-link" href="mailto:delong.li-1@student.uts.edu.au" aria-label="发送邮件给李德龙">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
                         </a>
                         <a class="icon-link" href="https://github.com/DELONG-L" target="_blank" rel="noopener" aria-label="GitHub">
@@ -929,8 +928,8 @@
     </main>
 
     <footer>
-        <span>Designed and built by Delong Li.</span>
-        <span>&copy; <span id="year">2026</span> All rights reserved.</span>
+        <span>由李德龙设计与维护。</span>
+        <span>&copy; <span id="year">2026</span> 版权所有。</span>
     </footer>
 
     <script>

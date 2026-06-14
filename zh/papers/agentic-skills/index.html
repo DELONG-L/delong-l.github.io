@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoK: Agentic Skills | 中文导读</title>
+  <meta name="description" content="《SoK: Agentic Skills - Beyond Tool Use in LLM Agents》的中文论文导读与可视化概览。">
+  <meta name="theme-color" content="#faf9f5">
+  <link rel="canonical" href="https://delong-l.github.io/zh/papers/agentic-skills/">
+  <link rel="alternate" hreflang="en" href="https://delong-l.github.io/papers/agentic-skills/">
+  <link rel="alternate" hreflang="zh-CN" href="https://delong-l.github.io/zh/papers/agentic-skills/">
+  <link rel="alternate" hreflang="x-default" href="https://delong-l.github.io/papers/agentic-skills/">
+
+  <meta property="og:title" content="SoK: Agentic Skills | 中文导读">
+  <meta property="og:description" content="围绕智能体技能模块的定义、生命周期、模式、治理与评测的中文可视化导读。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://delong-l.github.io/zh/papers/agentic-skills/">
+  <meta property="og:image" content="https://delong-l.github.io/papers/agentic-skills/assets/pattern-spectrum.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../papers/agentic-skills/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell topbar">
+      <a class="brand" href="/zh/" aria-label="返回李德龙中文主页">
+        <span>Agentic Skills</span>
+      </a>
+      <div class="topbar-end">
+        <nav class="nav-scroll" aria-label="主导航">
+          <a href="#summary">概览</a>
+          <a href="#abstract">摘要</a>
+          <a href="#framework">框架</a>
+          <a href="#patterns">模式</a>
+          <a href="#security">安全</a>
+          <a href="#evaluation">评测</a>
+          <a href="#citation">引用</a>
+        </nav>
+        <div class="lang-switch" aria-label="语言切换">
+          <a class="lang-link" href="/papers/agentic-skills/">EN</a>
+          <a class="lang-link active" href="/zh/papers/agentic-skills/">中文</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">arXiv 预印本 · 2026 · 综述论文</p>
+          <h1>SoK: Agentic Skills - Beyond Tool Use in LLM Agents</h1>
+          <p class="deck">
+            这篇综述系统梳理了 LLM 智能体中“技能模块（agentic skills）”的定义、获取方式、执行机制、安全风险与评测方法。
+          </p>
+
+          <div class="author-block">
+            <p class="authors">Yanna Jiang, Delong Li, Haiyu Deng, Baihe Ma, Xu Wang, Qin Wang, Guangsheng Yu</p>
+            <p class="affiliations">悉尼科技大学 · CSIRO Data61</p>
+          </div>
+
+          <div class="button-row">
+            <a class="button primary" href="../../../papers/agentic-skills/paper.pdf" target="_blank" rel="noopener">论文 PDF</a>
+            <a class="button secondary" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">arXiv</a>
+            <a class="button secondary" href="#citation">BibTeX</a>
+          </div>
+
+          <div class="hero-facts">
+            <article>
+              <span class="fact-label">覆盖范围</span>
+              <strong>65 篇论文，24 个系统</strong>
+            </article>
+            <article>
+              <span class="fact-label">分类结果</span>
+              <strong>7 类模式，5 种表示形态</strong>
+            </article>
+            <article>
+              <span class="fact-label">核心结论</span>
+              <strong>人工整理技能 +16.2pp；自生成技能 -1.3pp</strong>
+            </article>
+          </div>
+        </div>
+
+        <figure class="hero-figure">
+          <img src="../../../papers/agentic-skills/assets/pattern-spectrum.png" alt="agentic skills 的七类典型设计模式">
+          <figcaption>
+            论文给出的核心系统视图：技能模块如何被封装、加载、组合并在运行时执行。
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="summary" class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="kicker">概览</p>
+          <h2>这篇综述的三点核心贡献</h2>
+        </div>
+
+        <div class="card-grid three-up">
+          <article class="feature-card">
+            <span class="feature-index">01</span>
+            <h3>统一的技能抽象</h3>
+            <p>
+              作者将“skill”形式化为具有适用条件、执行策略、终止条件与接口的可复用过程模块。
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">02</span>
+            <h3>完整的生命周期模型</h3>
+            <p>
+              把发现、练习、蒸馏、存储、调用与更新放进同一条系统链路中讨论。
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">03</span>
+            <h3>面向真实部署的视角</h3>
+            <p>
+              论文不只讨论能力提升，也把信任分层、供应链风险、评测与治理纳入系统视角。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="abstract" class="section band-soft">
+      <div class="shell split-layout">
+        <div class="section-heading">
+          <p class="kicker">摘要</p>
+          <h2>把技能模块层当作独立系统层来理解</h2>
+        </div>
+
+        <div class="prose">
+          <p>
+            随着智能体系统承担更长、更复杂的任务，单次工具调用已经不足以解释其稳定性来源。论文提出，真正值得研究的是可复用的过程能力，也就是技能模块（agentic skills）：它们如何被发现、沉淀、调用，并在长期运行中持续维护。
+          </p>
+          <p>
+            作者据此提出两套互补视角。第一套是七类模式的分类框架，用来描述现实系统中技能模块如何被封装与部署，包括元数据披露、代码式技能、自演化技能库以及市场化分发。第二套则从“技能以什么形式存在、它作用于哪里”来划分表示方式与执行范围。
+          </p>
+          <p>
+            更重要的是，论文没有把 skill 只当作提示工程技巧，而是把它视为需要安全边界、版本治理和确定性验证的系统资产。这也是整篇综述最有价值的地方。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="framework" class="section">
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">框架</p>
+          <h2>什么样的过程才算一个 agentic skill</h2>
+          <p class="section-note">
+            作者把技能模块视为有边界、可复用、可调度的过程模块，从而将其与一次性计划、孤立工具调用和普通记忆记录区分开来。
+          </p>
+        </div>
+
+        <div class="framework-layout">
+          <figure class="media-card figure-focus">
+            <img src="../../../papers/agentic-skills/assets/skill-anatomy.png" alt="agentic skill 的内部结构示意图">
+            <figcaption>
+              论文反复使用的 anatomy 视图：适用条件、执行策略、终止条件与接口。
+            </figcaption>
+          </figure>
+
+          <div class="framework-copy">
+            <article class="equation-card">
+              <span class="equation-label">形式定义</span>
+              <code>S = (C, pi, T, R)</code>
+              <p>
+                由适用条件、执行策略、终止条件与可复用接口共同组成。
+              </p>
+            </article>
+
+            <div class="definition-grid">
+              <article class="definition-card">
+                <span>C</span>
+                <h3>何时调用</h3>
+                <p>适用条件决定某个技能是否匹配当前任务上下文。</p>
+              </article>
+              <article class="definition-card">
+                <span>pi</span>
+                <h3>如何执行</h3>
+                <p>执行策略可以是自然语言、代码、工作流，或它们的混合封装。</p>
+              </article>
+              <article class="definition-card">
+                <span>T</span>
+                <h3>何时终止</h3>
+                <p>终止规则让技能具备可审计性，而不是无限延展的提示词。</p>
+              </article>
+              <article class="definition-card">
+                <span>R</span>
+                <h3>如何复用</h3>
+                <p>接口把技能暴露为可路由、可组合的调用工件。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lifecycle" class="section band-soft">
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">生命周期</p>
+          <h2>技能模块不是一次性提示，而是持续演化的系统资产</h2>
+          <p class="section-note">
+            这一生命周期视图把综述从分类梳理推进到系统层面：技能模块需要被获取、存储、执行、评测，并在证据驱动下持续修订。
+          </p>
+        </div>
+
+        <div class="lifecycle-layout">
+          <figure class="media-card figure-focus">
+            <img src="../../../papers/agentic-skills/assets/skill-lifecycle.png" alt="agentic skill 生命周期示意图">
+            <figcaption>
+              生命周期模型把发现、练习、蒸馏、存储、调用、执行与更新连成一条完整链路。
+            </figcaption>
+          </figure>
+
+          <div class="timeline-card step-list">
+            <article>
+              <span class="step-index">01</span>
+              <div>
+                <h3>发现</h3>
+                <p>识别值得沉淀为技能的重复任务、失败模式或高价值人工操作。</p>
+              </div>
+            </article>
+            <article>
+              <span class="step-index">02</span>
+              <div>
+                <h3>练习与精炼</h3>
+                <p>通过执行反馈、反思或外部监督，持续改进候选过程。</p>
+              </div>
+            </article>
+            <article>
+              <span class="step-index">03</span>
+              <div>
+                <h3>蒸馏</h3>
+                <p>把成功轨迹压缩为边界清晰、可复用的技能工件。</p>
+              </div>
+            </article>
+            <article>
+              <span class="step-index">04</span>
+              <div>
+                <h3>存储与检索</h3>
+                <p>对技能进行索引、版本管理，并在合适的上下文中检索与路由。</p>
+              </div>
+            </article>
+            <article>
+              <span class="step-index">05</span>
+              <div>
+                <h3>执行与更新</h3>
+                <p>在权限边界内运行，再根据评测和回归结果进行精炼、替换或退役。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="patterns" class="section">
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">模式</p>
+          <h2>七类典型模式展示了技能模块如何被封装、调度与分发</h2>
+          <p class="section-note">
+            这些模式并非互斥；一个成熟系统往往会同时采用多种表示与调度机制。
+          </p>
+        </div>
+
+        <figure class="wide-media">
+          <img src="../../../papers/agentic-skills/assets/pattern-spectrum.png" alt="agentic skills 的七类典型设计模式">
+          <figcaption>
+            按自治程度从低到高排列：从元数据驱动披露，一直到能够生成更多技能的元技能。
+          </figcaption>
+        </figure>
+
+        <div class="pattern-lenses">
+          <article class="pattern-card pattern-lens">
+            <span class="pattern-tag">P1</span>
+            <h3>披露与选择</h3>
+            <p>通过先披露元数据、再按需展开，把技能选择过程显式化，同时控制上下文开销。</p>
+          </article>
+          <article class="pattern-card pattern-lens">
+            <span class="pattern-tag">P2-P3</span>
+            <h3>可执行约束</h3>
+            <p>代码式技能和工作流封装把复用过程转化为可测试、可回归的运行时行为。</p>
+          </article>
+          <article class="pattern-card pattern-lens">
+            <span class="pattern-tag">P4-P6</span>
+            <h3>自我改进的技能库</h3>
+            <p>自演化库、混合封装与元技能，让技能管理本身进入智能体闭环。</p>
+          </article>
+          <article class="pattern-card pattern-lens">
+            <span class="pattern-tag">P7</span>
+            <h3>分发与治理</h3>
+            <p>市场化分发提升了复用效率，也把技能生态带入供应链安全问题。</p>
+          </article>
+        </div>
+
+        <div class="split-layout lower-split">
+          <figure class="media-card">
+            <img src="../../../papers/agentic-skills/assets/skill-composition.png" alt="skill 的组合与编排">
+            <figcaption>
+              技能组合本身也是系统问题：需要检索、路由、拆解、恢复与重试。
+            </figcaption>
+          </figure>
+
+          <figure class="media-card">
+            <img src="../../../papers/agentic-skills/assets/mcp-skills-evolution.png" alt="MCP 与 skills 的关系">
+            <figcaption>
+              论文还把技能模块放回 MCP 等新兴基础设施中，讨论它在更大的智能体技术栈中的位置。
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="section band-soft">
+      <div class="shell split-layout">
+        <div class="text-stack">
+          <div class="section-heading">
+            <p class="kicker">安全</p>
+            <h2>技能生态会继承典型的软件供应链风险</h2>
+          </div>
+
+          <article class="callout-card">
+            <h3>论文重点关注的威胁</h3>
+            <ul>
+              <li>通过对抗性元数据干扰技能检索</li>
+              <li>在代码或自然语言技能主体中植入恶意载荷</li>
+              <li>跨租户信息泄露与 confused deputy 问题</li>
+              <li>适用条件被投毒，以及技能随时间漂移</li>
+            </ul>
+          </article>
+
+          <article class="coral-note">
+            <span>ClawHavoc 事件</span>
+            <p>
+              作者用真实市场事件说明治理并非假想问题：一次审计中共发现 1,184 个恶意技能条目，36.8% 的列表存在缺陷，涉及 API key、钱包、浏览器与 SSH key 等凭据窃取。
+            </p>
+          </article>
+        </div>
+
+        <figure class="media-card">
+          <img src="../../../papers/agentic-skills/assets/trust-tiers.png" alt="skill 治理中的信任分层威胁模型">
+          <figcaption>
+            论文提出的信任分层：从仅暴露元数据，到受监督执行，再到更高自治度的运行模式。
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="evaluation" class="section">
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">评测</p>
+          <h2>最明确的实证结论是：人工整理的技能有效，自生成技能未必</h2>
+        </div>
+
+        <div class="stats-band">
+          <article class="stat-panel good">
+            <span class="stat-number">+16.2pp</span>
+            <h3>人工整理技能</h3>
+            <p>在 SkillsBench 上，平均通过率由 24.3% 提升至 40.6%。</p>
+          </article>
+          <article class="stat-panel bad">
+            <span class="stat-number">-1.3pp</span>
+            <h3>自生成技能</h3>
+            <p>在开放任务场景下，相比无技能基线平均下降 1.3 个百分点。</p>
+          </article>
+          <article class="stat-panel neutral">
+            <span class="stat-number">7,308</span>
+            <h3>轨迹规模</h3>
+            <p>这是论文在 SkillsBench 个案分析中引用的轨迹数量。</p>
+          </article>
+          <article class="stat-panel neutral">
+            <span class="stat-number">5</span>
+            <h3>评测维度</h3>
+            <p>正确性、鲁棒性、效率、泛化与安全。</p>
+          </article>
+        </div>
+
+        <div class="split-layout lower-split">
+          <figure class="media-card">
+            <img src="../../../papers/agentic-skills/assets/skill-eval-pipeline.png" alt="面向工业环境的 skill 评测流水线">
+            <figcaption>
+              工业视角会把技能模块纳入类似 CI 的验证流程：回归测试、比较器智能体与版本化更新。
+            </figcaption>
+          </figure>
+
+          <div class="prose prose-large">
+            <p>
+              论文在评测上的立场很务实。关键不在于某个技能模块看起来是否巧妙，而在于它是否能在可重复、可比较的验证条件下稳定改善下游任务。
+            </p>
+            <p>
+              因此，作者强调 benchmark harness、结果导向验证和工业级回归基础设施。在这个视角里，技能模块更接近生产逻辑，而不只是某个提示词技巧。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section band-soft">
+      <div class="shell citation-shell">
+        <div class="section-heading">
+          <p class="kicker">引用</p>
+          <h2>引用本文</h2>
+        </div>
+
+        <div class="citation-toolbar">
+          <p>当前建议引用 arXiv 版本。</p>
+          <button id="copy-citation" class="button secondary" type="button">复制 BibTeX</button>
+        </div>
+
+        <pre id="citation-block">@article{jiang2026agenticskills,
+  title   = {SoK: Agentic Skills - Beyond Tool Use in LLM Agents},
+  author  = {Jiang, Yanna and Li, Delong and Deng, Haiyu and Ma, Baihe and
+             Wang, Xu and Wang, Qin and Yu, Guangsheng},
+  journal = {arXiv preprint arXiv:2602.20867},
+  year    = {2026}
+}</pre>
+      </div>
+    </section>
+  </main>
+
+  <script src="../../../papers/agentic-skills/script.js"></script>
+</body>
+</html>
