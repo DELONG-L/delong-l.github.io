@@ -162,12 +162,12 @@
 
         .hero {
             width: min(var(--content), calc(100% - 40px));
-            min-height: calc(100vh - 64px);
+            min-height: min(720px, calc(100vh - 64px));
             margin: 0 auto;
-            padding: 88px 0 56px;
+            padding: 72px 0 48px;
             display: grid;
             grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-            align-items: center;
+            align-items: start;
             gap: 56px;
         }
 
@@ -458,9 +458,44 @@
 
         .paper-links {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             align-items: center;
             justify-content: flex-end;
+        }
+
+        .paper-link {
+            min-height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--hairline);
+            background: var(--canvas);
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .paper-link:hover {
+            color: var(--primary-active);
+            border-color: rgba(204, 120, 92, 0.45);
+        }
+
+        .paper-link.primary {
+            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .paper-link.primary:hover {
+            color: #fff;
+            background: var(--primary-active);
+            border-color: var(--primary-active);
         }
 
         .icon-link {
@@ -479,6 +514,48 @@
         .icon-link:hover {
             color: var(--primary-active);
             border-color: rgba(204, 120, 92, 0.45);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .project-card {
+            padding: 28px;
+            border: 1px solid var(--hairline);
+            border-radius: 8px;
+            background: rgba(250, 249, 245, 0.78);
+        }
+
+        .project-kicker {
+            margin: 0 0 12px;
+            font-family: "JetBrains Mono", monospace;
+            color: var(--primary-active);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 30px;
+            line-height: 1.12;
+        }
+
+        .project-card p:last-of-type {
+            margin: 14px 0 0;
+            color: var(--body);
+            font-size: 15px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .contact-band {
@@ -557,6 +634,10 @@
                 gap: 18px;
             }
 
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
             .paper-links {
                 justify-content: flex-start;
             }
@@ -617,6 +698,7 @@
             <div class="nav-links">
                 <a href="#about">About</a>
                 <a href="#publications">Publications</a>
+                <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
         </div>
@@ -625,19 +707,19 @@
     <main id="top">
         <section class="hero" aria-labelledby="hero-title">
             <div>
-                <p class="eyebrow">UTS CybeR Lab / Trustworthy AI</p>
+                <p class="eyebrow">PhD Researcher · UTS CybeR Lab · Trustworthy AI</p>
                 <h1 id="hero-title">Delong Li</h1>
                 <p class="hero-copy">
-                    PhD student at the University of Technology Sydney, working on machine unlearning, AI security, privacy-aware inference, and governance-ready AI systems.
+                    I study machine unlearning, agentic AI security, and privacy-aware inference, with a focus on making adaptive AI systems more auditable, governable, and empirically trustworthy.
                 </p>
                 <div class="hero-actions">
                     <a class="button button-primary" href="#publications">
                         <i class="fas fa-book-open" aria-hidden="true"></i>
-                        View publications
+                        Selected papers
                     </a>
                     <a class="button button-secondary" href="https://scholar.google.com/citations?user=hItKYpwAAAAJ" target="_blank" rel="noopener">
                         <i class="ai ai-google-scholar" aria-hidden="true"></i>
-                        Google Scholar
+                        Scholar profile
                     </a>
                 </div>
             </div>
@@ -652,18 +734,18 @@
                     <span>research-profile.json</span>
                 </div>
                 <div class="signal-body">
-                    <p class="signal-title">Building auditable, privacy-aware, and resilient AI systems.</p>
+                    <p class="signal-title">Research agenda: trustworthy adaptation, privacy-preserving inference, and secure agentic systems.</p>
                     <div class="signal-grid">
                         <div class="signal-row">
                             <span>Affiliation</span>
                             <strong>School of Electrical & Data Engineering, UTS</strong>
                         </div>
                         <div class="signal-row">
-                            <span>Lab</span>
-                            <strong>UTS CybeR Lab</strong>
+                            <span>Current role</span>
+                            <strong>PhD student · UTS CybeR Lab</strong>
                         </div>
                         <div class="signal-row">
-                            <span>Focus</span>
+                            <span>Research axes</span>
                             <strong>Unlearning, LLM agents, auditability, edge-cloud privacy</strong>
                         </div>
                     </div>
@@ -674,13 +756,13 @@
         <section class="section alt" id="about">
             <div class="section-inner">
                 <div class="section-heading">
-                    <h2>Research shaped around accountability.</h2>
-                    <p>My work studies how AI systems can be adapted, audited, and deployed while preserving privacy, utility, and operational trust.</p>
+                    <h2>Research agenda and technical focus.</h2>
+                    <p>I work on how AI systems can be updated, forgotten, audited, and deployed under real privacy, security, and governance constraints.</p>
                 </div>
                 <div class="about-grid">
                     <div class="text-block">
                         <p>
-                            I am currently a PhD student at the University of Technology Sydney and a member of UTS CybeR Lab. My research connects machine unlearning, LLM security, federated learning, privacy-aware inference, and agentic AI governance.
+                            I am currently a PhD student at the University of Technology Sydney and a member of UTS CybeR Lab. My research connects machine unlearning, LLM security, federated and edge inference, evaluation methodology, and agentic AI governance, with an emphasis on systems that can be verified and responsibly operated.
                         </p>
                     </div>
                     <div class="tag-list" aria-label="Research interests">
@@ -699,7 +781,7 @@
             <div class="section-inner">
                 <div class="section-heading">
                     <h2>Selected publications.</h2>
-                    <p>Four recent papers covering agentic skills, auditable LLM updates, privacy-aware edge-cloud inference, and LoRA-based machine unlearning.</p>
+                    <p>Recent papers across agentic systems, auditable LLM updates, privacy-aware edge-cloud inference, and machine unlearning.</p>
                 </div>
 
                 <div class="publication-list">
@@ -714,8 +796,11 @@
                             <p class="paper-summary">A systematization of agentic skills across their lifecycle, with taxonomies for skill packaging, representation, execution scope, evaluation, and governance risk.</p>
                         </div>
                         <div class="paper-links">
-                            <a class="icon-link" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener" aria-label="Open arXiv paper">
-                                <i class="ai ai-doi" aria-hidden="true"></i>
+                            <a class="paper-link primary" href="papers/agentic-skills/">
+                                Visual page
+                            </a>
+                            <a class="paper-link" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">
+                                arXiv
                             </a>
                         </div>
                     </article>
@@ -731,8 +816,8 @@
                             <p class="paper-summary">A lightweight audit layer for LLM adaptation and unlearning that records tamper-evident update trails while supporting third-party verification.</p>
                         </div>
                         <div class="paper-links">
-                            <a class="icon-link" href="https://www.mdpi.com/2079-9292/15/1/56" target="_blank" rel="noopener" aria-label="Open MDPI paper">
-                                <i class="ai ai-doi" aria-hidden="true"></i>
+                            <a class="paper-link" href="https://www.mdpi.com/2079-9292/15/1/56" target="_blank" rel="noopener">
+                                Publisher
                             </a>
                         </div>
                     </article>
@@ -748,8 +833,8 @@
                             <p class="paper-summary">A post-hoc embedding replacement method that reduces identity leakage in edge-cloud inference while preserving task utility under fixed communication cost.</p>
                         </div>
                         <div class="paper-links">
-                            <a class="icon-link" href="https://link.springer.com/article/10.1186/s13677-026-00916-3" target="_blank" rel="noopener" aria-label="Open Springer paper">
-                                <i class="ai ai-doi" aria-hidden="true"></i>
+                            <a class="paper-link" href="https://link.springer.com/article/10.1186/s13677-026-00916-3" target="_blank" rel="noopener">
+                                Publisher
                             </a>
                         </div>
                     </article>
@@ -765,9 +850,40 @@
                             <p class="paper-summary">A survey of adapter-centric machine unlearning for LLMs, organizing methods through a unified adapter-space taxonomy and evaluation view.</p>
                         </div>
                         <div class="paper-links">
-                            <a class="icon-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522" target="_blank" rel="noopener" aria-label="Open SSRN paper">
-                                <i class="ai ai-doi" aria-hidden="true"></i>
+                            <a class="paper-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522" target="_blank" rel="noopener">
+                                SSRN
                             </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section alt" id="projects">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <h2>Projects and research artifacts.</h2>
+                    <p>Reusable tools and public-facing artifacts that package methods, workflows, and visual explanations beyond the paper PDF.</p>
+                </div>
+
+                <div class="project-grid">
+                    <article class="project-card">
+                        <p class="project-kicker">Open-source skill</p>
+                        <h3>arXiv Paper Page Skill</h3>
+                        <p>A reusable Codex skill that scaffolds static GitHub Pages project sites from arXiv papers while keeping public deliverables separate from authoring materials.</p>
+                        <div class="project-links">
+                            <a class="paper-link primary" href="https://github.com/DELONG-L/arxiv-paper-page-skill" target="_blank" rel="noopener">GitHub repo</a>
+                            <a class="paper-link" href="papers/agentic-skills/">Live example</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <p class="project-kicker">Paper companion</p>
+                        <h3>Visual survey page for agentic skills</h3>
+                        <p>A readable companion page for the SoK on agentic skills, designed to surface the lifecycle, taxonomy, and governance results more clearly than the PDF alone.</p>
+                        <div class="project-links">
+                            <a class="paper-link primary" href="papers/agentic-skills/">Open page</a>
+                            <a class="paper-link" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">arXiv</a>
                         </div>
                     </article>
                 </div>

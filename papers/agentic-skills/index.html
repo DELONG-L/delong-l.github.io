@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoK: Agentic Skills - Beyond Tool Use in LLM Agents</title>
+  <meta name="description" content="A warm, readability-first project page for the arXiv preprint SoK: Agentic Skills - Beyond Tool Use in LLM Agents.">
+  <meta name="theme-color" content="#faf9f5">
+  <link rel="canonical" href="https://delong-l.github.io/papers/agentic-skills/">
+
+  <meta property="og:title" content="SoK: Agentic Skills - Beyond Tool Use in LLM Agents">
+  <meta property="og:description" content="A visual guide to the lifecycle, design patterns, governance, and evaluation of agentic skills.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://delong-l.github.io/papers/agentic-skills/">
+  <meta property="og:image" content="assets/pattern-spectrum.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell topbar">
+      <a class="brand" href="../../" aria-label="Back to Delong Li homepage">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Agentic Skills</span>
+      </a>
+      <nav class="nav-scroll" aria-label="Primary">
+        <a href="#summary">Summary</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#framework">Framework</a>
+        <a href="#patterns">Patterns</a>
+        <a href="#security">Security</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">arXiv preprint · 2026 · survey paper</p>
+          <h1>SoK: Agentic Skills - Beyond Tool Use in LLM Agents</h1>
+          <p class="deck">
+            A systematization of how reusable procedural modules are defined, acquired, executed,
+            secured, and evaluated in modern LLM agent systems.
+          </p>
+
+          <div class="author-block">
+            <p class="authors">Yanna Jiang, Delong Li, Haiyu Deng, Baihe Ma, Xu Wang, Qin Wang, Guangsheng Yu</p>
+            <p class="affiliations">University of Technology Sydney · CSIRO Data61</p>
+          </div>
+
+          <div class="button-row">
+            <a class="button primary" href="paper.pdf" target="_blank" rel="noopener">Paper PDF</a>
+            <a class="button secondary" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">arXiv</a>
+            <a class="button secondary" href="#citation">BibTeX</a>
+          </div>
+
+          <div class="hero-facts">
+            <article>
+              <span class="fact-label">Corpus</span>
+              <strong>65 papers, 24 systems</strong>
+            </article>
+            <article>
+              <span class="fact-label">Taxonomy</span>
+              <strong>7 patterns, 5 representation classes</strong>
+            </article>
+            <article>
+              <span class="fact-label">Anchor result</span>
+              <strong>Curated skills: +16.2pp, self-generated: -1.3pp</strong>
+            </article>
+          </div>
+        </div>
+
+        <figure class="hero-figure">
+          <img src="assets/pattern-spectrum.png" alt="Seven design patterns for agentic skills">
+          <figcaption>
+            The paper's central systems view: seven design patterns for how skills are packaged, loaded, and executed.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="summary" class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="kicker">Summary</p>
+          <h2>What this paper contributes</h2>
+        </div>
+
+        <div class="card-grid three-up">
+          <article class="feature-card">
+            <span class="feature-index">01</span>
+            <h3>A unified skill abstraction</h3>
+            <p>
+              Skills are formalized as reusable modules with applicability, execution policy, termination, and interface.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">02</span>
+            <h3>A lifecycle model</h3>
+            <p>
+              Discovery, refinement, distillation, storage, composition, execution, and update are treated as one pipeline.
+            </p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">03</span>
+            <h3>A production-facing lens</h3>
+            <p>
+              The paper connects representation to trust tiers, supply-chain risk, deterministic evaluation, and governance.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="abstract" class="section band-soft">
+      <div class="shell split-layout">
+        <div class="section-heading">
+          <p class="kicker">Abstract</p>
+          <h2>A survey of the skill layer in agent systems</h2>
+        </div>
+
+        <div class="prose">
+          <p>
+            Agentic systems increasingly rely on reusable procedural capabilities, or agentic skills, to execute
+            long-horizon workflows reliably. This paper argues that the skill layer deserves its own systems view:
+            not just how a model calls a tool once, but how reusable procedures are discovered, stored, governed,
+            and evaluated over time.
+          </p>
+          <p>
+            The survey introduces two complementary organizing lenses. The first is a seven-pattern taxonomy for how
+            skills are represented and deployed in real systems, from metadata-driven disclosure and executable code
+            skills to self-evolving libraries and marketplace distribution. The second is an orthogonal
+            representation-by-scope view that separates what a skill is from where it operates.
+          </p>
+          <p>
+            Beyond taxonomy, the paper treats skills as a security and operations problem. It analyzes trust tiers,
+            prompt-injection-style skill payloads, supply-chain risks in skill marketplaces, and deterministic
+            evaluation pipelines for deciding whether a skill helps in practice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="framework" class="section">
+      <div class="shell split-layout">
+        <div class="text-stack">
+          <div class="section-heading">
+            <p class="kicker">Framework</p>
+            <h2>What counts as an agentic skill</h2>
+          </div>
+
+          <article class="equation-card">
+            <span class="equation-label">Formalization</span>
+            <code>S = (C, pi, T, R)</code>
+            <p>
+              Applicability condition, executable policy, termination condition, and reusable callable interface.
+            </p>
+          </article>
+
+          <div class="pill-list">
+            <span>Executable</span>
+            <span>Reusable</span>
+            <span>Composable</span>
+            <span>Governable</span>
+          </div>
+
+          <div class="prose">
+            <p>
+              The paper positions skills between tools, plans, memory, and prompt templates. Tools are atomic calls.
+              Plans are one-off reasoning scaffolds. Memory stores observations. Skills are reusable procedural modules
+              that can be invoked again under recurring conditions.
+            </p>
+            <p>
+              That distinction matters because it shifts the question from single-turn tool use to durable procedural
+              knowledge that can be retrieved, verified, and maintained like infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <figure class="media-card">
+          <img src="assets/skill-anatomy.png" alt="Internal anatomy of an agentic skill">
+          <figcaption>
+            The anatomy view used throughout the paper: applicability, policy, termination, and interface.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="lifecycle" class="section band-soft">
+      <div class="shell split-layout">
+        <figure class="media-card">
+          <img src="assets/skill-lifecycle.png" alt="Agentic skill lifecycle diagram">
+          <figcaption>
+            The lifecycle model connects discovery, refinement, distillation, storage, composition, execution, and update.
+          </figcaption>
+        </figure>
+
+        <div class="text-stack">
+          <div class="section-heading">
+            <p class="kicker">Lifecycle</p>
+            <h2>Skills are treated as evolving system components</h2>
+          </div>
+
+          <div class="timeline-card">
+            <article>
+              <h3>Discovery</h3>
+              <p>Identify recurring task patterns, bottlenecks, or failure modes worth encapsulating.</p>
+            </article>
+            <article>
+              <h3>Practice and refinement</h3>
+              <p>Improve candidate procedures through execution feedback, reflection, or external supervision.</p>
+            </article>
+            <article>
+              <h3>Distillation</h3>
+              <p>Compress successful trajectories into a reusable procedural artifact with explicit boundaries.</p>
+            </article>
+            <article>
+              <h3>Storage and retrieval</h3>
+              <p>Index skills, manage versions, and route the right skill into the right runtime context.</p>
+            </article>
+            <article>
+              <h3>Execution and update</h3>
+              <p>Run within permission boundaries, then regress, refine, or retire based on evidence.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="patterns" class="section">
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">Patterns</p>
+          <h2>Seven recurrent ways systems package and expose skills</h2>
+          <p class="section-note">
+            The taxonomy is intentionally non-exclusive: strong systems often combine multiple patterns.
+          </p>
+        </div>
+
+        <figure class="wide-media">
+          <img src="assets/pattern-spectrum.png" alt="Seven design patterns for agentic skills">
+          <figcaption>
+            Skills are arranged along an autonomy spectrum, from metadata-gated disclosure to meta-skills that create more skills.
+          </figcaption>
+        </figure>
+
+        <div class="card-grid four-up">
+          <article class="pattern-card">
+            <span class="pattern-tag">P1</span>
+            <h3>Metadata-driven disclosure</h3>
+            <p>Load compact metadata first, and only expand the full skill when it is selected.</p>
+          </article>
+          <article class="pattern-card">
+            <span class="pattern-tag">P2</span>
+            <h3>Code-as-skill</h3>
+            <p>Represent skills as executable procedures with deterministic behavior.</p>
+          </article>
+          <article class="pattern-card">
+            <span class="pattern-tag">P3</span>
+            <h3>Workflow enforcement</h3>
+            <p>Constrain agent behavior through hard-gated methods and ordered recovery flow.</p>
+          </article>
+          <article class="pattern-card">
+            <span class="pattern-tag">P4</span>
+            <h3>Self-evolving libraries</h3>
+            <p>Absorb successful trajectories back into the library as new or revised skills.</p>
+          </article>
+          <article class="pattern-card">
+            <span class="pattern-tag">P5</span>
+            <h3>Hybrid NL + code skills</h3>
+            <p>Combine human-readable instructions with scripts, tools, and references.</p>
+          </article>
+          <article class="pattern-card">
+            <span class="pattern-tag">P6</span>
+            <h3>Meta-skills</h3>
+            <p>Use one skill to author, modify, or orchestrate other skills.</p>
+          </article>
+          <article class="pattern-card">
+            <span class="pattern-tag">P7</span>
+            <h3>Marketplace distribution</h3>
+            <p>Publish portable skill packages that scale reuse and expand the supply-chain surface.</p>
+          </article>
+        </div>
+
+        <div class="split-layout lower-split">
+          <figure class="media-card">
+            <img src="assets/skill-composition.png" alt="Skill composition and orchestration">
+            <figcaption>
+              Runtime composition is itself a systems problem: retrieve, route, decompose, recover, and retry.
+            </figcaption>
+          </figure>
+
+          <figure class="media-card">
+            <img src="assets/mcp-skills-evolution.png" alt="Relationship between MCP and skills">
+            <figcaption>
+              The discussion section also situates skills relative to MCP and other emerging infrastructure layers.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="security" class="section band-soft">
+      <div class="shell split-layout">
+        <div class="text-stack">
+          <div class="section-heading">
+            <p class="kicker">Security</p>
+            <h2>Skill ecosystems inherit the supply-chain problem</h2>
+          </div>
+
+          <article class="callout-card">
+            <h3>Threats the paper emphasizes</h3>
+            <ul>
+              <li>Poisoned skill retrieval through adversarial metadata</li>
+              <li>Malicious payloads in code or natural-language skill bodies</li>
+              <li>Cross-tenant leakage and confused-deputy behavior</li>
+              <li>Applicability-condition poisoning and skill drift</li>
+            </ul>
+          </article>
+
+          <article class="coral-note">
+            <span>ClawHavoc anchor case</span>
+            <p>
+              The paper grounds governance in a real marketplace incident: 1,184 malicious skills, 36.8% flawed
+              listings in one audit, and credential theft spanning API keys, wallets, browsers, and SSH keys.
+            </p>
+          </article>
+        </div>
+
+        <figure class="media-card">
+          <img src="assets/trust-tiers.png" alt="Trust-tiered threat model for skill governance">
+          <figcaption>
+            The proposed trust model moves from metadata-only exposure to supervised and then autonomous execution.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="evaluation" class="section">
+      <div class="shell">
+        <div class="section-heading wide-heading">
+          <p class="kicker">Evaluation</p>
+          <h2>The strongest empirical result is about curation, not raw generation</h2>
+        </div>
+
+        <div class="stats-band">
+          <article class="stat-panel good">
+            <span class="stat-number">+16.2pp</span>
+            <h3>Curated skills</h3>
+            <p>Average pass-rate lift in SkillsBench, from 24.3% to 40.6%.</p>
+          </article>
+          <article class="stat-panel bad">
+            <span class="stat-number">-1.3pp</span>
+            <h3>Self-generated skills</h3>
+            <p>Average degradation relative to the no-skills baseline in open-ended settings.</p>
+          </article>
+          <article class="stat-panel neutral">
+            <span class="stat-number">7,308</span>
+            <h3>Trajectories</h3>
+            <p>Benchmark scale cited in the paper's SkillsBench case study.</p>
+          </article>
+          <article class="stat-panel neutral">
+            <span class="stat-number">5</span>
+            <h3>Evaluation dimensions</h3>
+            <p>Correctness, robustness, efficiency, generalization, and safety.</p>
+          </article>
+        </div>
+
+        <div class="split-layout lower-split">
+          <figure class="media-card">
+            <img src="assets/skill-eval-pipeline.png" alt="Industrial evaluation pipeline for skills">
+            <figcaption>
+              The industrial view maps skills to CI-style verification: regression suites, comparator agents, and versioned updates.
+            </figcaption>
+          </figure>
+
+          <div class="prose prose-large">
+            <p>
+              The paper's evaluation stance is pragmatic. What matters is not whether a skill looks elegant in isolation,
+              but whether it reliably improves downstream outcomes under deterministic verification.
+            </p>
+            <p>
+              That is why the survey elevates benchmark harnesses, outcome-based verification, and industrial regression
+              infrastructure. In this framing, a skill is closer to production logic than to a clever prompt.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section band-soft">
+      <div class="shell citation-shell">
+        <div class="section-heading">
+          <p class="kicker">Citation</p>
+          <h2>Cite the paper directly</h2>
+        </div>
+
+        <div class="citation-toolbar">
+          <p>Use the arXiv version for now.</p>
+          <button id="copy-citation" class="button secondary" type="button">Copy BibTeX</button>
+        </div>
+
+        <pre id="citation-block">@article{jiang2026agenticskills,
+  title   = {SoK: Agentic Skills - Beyond Tool Use in LLM Agents},
+  author  = {Jiang, Yanna and Li, Delong and Deng, Haiyu and Ma, Baihe and
+             Wang, Xu and Wang, Qin and Yu, Guangsheng},
+  journal = {arXiv preprint arXiv:2602.20867},
+  year    = {2026}
+}</pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-row">
+      <p>Static project page for the arXiv version of the paper.</p>
+      <p>Prepared as a GitHub Pages-friendly public package with only web assets and the PDF.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
