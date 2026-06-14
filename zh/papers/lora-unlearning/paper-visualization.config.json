@@ -1,0 +1,349 @@
+{
+  "site": {
+    "title": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "short_title": "LoRA遗忘综述",
+    "lang": "zh-CN",
+    "kicker": "2025 · 综述论文 · 机器遗忘",
+    "subtitle": "一篇以适配器为中心的综述，讨论 LoRA 模块如何执行遗忘、维持效用，并支撑面向大语言模型的可审计删除流程。",
+    "meta_description": "这是一篇面向可读性的论文可视化页面，对《A Survey of LoRA-based Machine Unlearning for LLMs》中的适配器空间算子视角、六类方法谱系与基于 TOFU 的评测协议进行梳理。",
+    "theme_color": "#faf9f5",
+    "canonical_url": "https://delong-l.github.io/zh/papers/lora-unlearning/",
+    "og_url": "https://delong-l.github.io/zh/papers/lora-unlearning/",
+    "og_image": "https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png",
+    "alternates": [
+      {
+        "hreflang": "en",
+        "href": "https://delong-l.github.io/papers/lora-unlearning/"
+      },
+      {
+        "hreflang": "zh-CN",
+        "href": "https://delong-l.github.io/zh/papers/lora-unlearning/"
+      },
+      {
+        "hreflang": "x-default",
+        "href": "https://delong-l.github.io/papers/lora-unlearning/"
+      }
+    ],
+    "brand_home_url": "/zh/",
+    "brand_aria_label": "返回顶部",
+    "show_brand_mark": false,
+    "language_switch": {
+      "aria_label": "语言切换",
+      "links": [
+        {
+          "label": "EN",
+          "href": "/papers/lora-unlearning/"
+        },
+        {
+          "label": "中文",
+          "href": "/zh/papers/lora-unlearning/",
+          "active": true
+        }
+      ]
+    },
+    "links": [
+      {
+        "label": "论文 PDF",
+        "href": "/papers/lora-unlearning/paper.pdf",
+        "primary": true
+      },
+      {
+        "label": "预印本",
+        "href": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522"
+      },
+      {
+        "label": "BibTeX",
+        "href": "#citation"
+      }
+    ]
+  },
+  "authors": [
+    "Delong Li",
+    "Guangsheng Yu",
+    "Xu Wang",
+    "Yanna Jiang",
+    "Wencheng Yang",
+    "Bin Liang",
+    "Wei Ni"
+  ],
+  "affiliations": "University of Technology Sydney · University of Southern Queensland · Edith Cowan University",
+  "hero_facts": [
+    {
+      "label": "方法家族",
+      "value": "6类适配器空间方法"
+    },
+    {
+      "label": "算子视角",
+      "value": "s、G、P、C、M"
+    },
+    {
+      "label": "评测设置",
+      "value": "TOFU + 持续删除 + PrivLeak"
+    }
+  ],
+  "hero_figure": {
+    "src": "/papers/lora-unlearning/assets/survey-roadmap.png",
+    "alt": "Roadmap showing how the survey moves from motivation to unified view, taxonomy, evaluation, and governance",
+    "caption": "论文路线图把研究动机、统一的适配器空间视角、方法分类、评测协议与部署议题串联在一起。",
+    "class_name": "figure-roadmap"
+  },
+  "summary": {
+    "kicker": "概览",
+    "nav_label": "概览",
+    "title": "这篇论文的核心贡献",
+    "cards_layout": "feature-grid",
+    "cards": [
+      {
+        "label": "01",
+        "title": "面向适配器的遗忘问题表述",
+        "body": "论文在冻结主干模型和显式 retain/forget 划分下形式化 LoRA 机器遗忘，使适配器检查点成为删除操作的主要承载体。"
+      },
+      {
+        "label": "02",
+        "title": "统一的算子化视角",
+        "body": "作者把现有方法拆成分数构造、预条件、投影、约束与掩码几个环节，从而让跨家族比较更清楚。"
+      },
+      {
+        "label": "03",
+        "title": "六类方法谱系",
+        "body": "现有工作被组织为梯度式、影响函数式、Fisher 信息式、结构/持续式、有界动力学式与剪枝/稀疏式六个家族。"
+      },
+      {
+        "label": "04",
+        "title": "评测与部署层面的建议",
+        "body": "论文汇总了 TOFU 风格报告方式、效用/遗忘/隐私之间的权衡，以及持续删除和治理落地时需要面对的工程问题。"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "abstract",
+      "nav_label": "摘要",
+      "kicker": "摘要",
+      "title": "为什么 LoRA 机器遗忘值得单独做一篇综述",
+      "theme": "soft",
+      "layout": "panorama",
+      "wide_figure": {
+        "src": "/papers/lora-unlearning/assets/system-overview.jpeg",
+        "alt": "Machine unlearning shown as a system-level capability across deployed LLM ecosystems",
+        "caption": "基于 LoRA 的机器遗忘把删除逻辑放入轻量适配器模块，同时保留已部署主干模型作为共享模型底座。",
+        "class_name": "figure-system-overview"
+      },
+      "paragraphs": [
+        "随着大语言模型走向真实部署，机器遗忘正在从学术议题变成工程需求。但许多既有方法默认可以访问全模型并承担重训成本，这在真实系统里往往并不现实。",
+        "与此同时，现代适配流程越来越依赖参数高效微调，尤其是把 LoRA 模块附着在冻结主干上并作为轻量检查点分发的做法。",
+        "这篇综述聚焦“适配器空间中的遗忘”：删除请求如何主要在 LoRA 空间内完成，不同方法家族如何权衡遗忘与保留能力，以及这些选择对隐私泄露、持续更新和运维治理意味着什么。"
+      ],
+      "highlights": [
+        "隐私与合规压力",
+        "冻结主干假设",
+        "PEFT 优先的部署现实",
+        "重复删除请求"
+      ]
+    },
+    {
+      "id": "framework",
+      "nav_label": "框架",
+      "kicker": "框架",
+      "title": "用统一的适配器空间视角理解 LoRA 模块中的遗忘",
+      "wide_heading": true,
+      "section_note": "论文认为，LoRA 机器遗忘首先是一个“如何设计适配器更新”的问题，而不是若干彼此割裂技巧的简单罗列。",
+      "theme": "plain",
+      "layout": "framework",
+      "figure": {
+        "src": "/papers/lora-unlearning/assets/adapter-space-view.png",
+        "alt": "Illustrative loss landscape for the unified adapter-space view",
+        "caption": "不同方法家族，其实都作用在同一个适配器更新算子的不同环节上。"
+      },
+      "equation": {
+        "label": "算子视角",
+        "value": "Δφ = M ∘ C ∘ P ∘ G(s(φ; D_f, D_r))",
+        "body": "forget 与 retain 数据产生的信号，会经过预条件、投影、约束以及可选的掩码步骤，再形成最终部署的更新。"
+      },
+      "cards": [
+        {
+          "label": "s",
+          "title": "得分信号",
+          "body": "原始的遗忘方向通常来自 forget 与 retain 数据上的损失组合，常见实现是不同形式的梯度混合。"
+        },
+        {
+          "label": "G",
+          "title": "预条件器",
+          "body": "恒等步、影响函数近似和 Fisher 曲率估计都会改变信号施加的幅度与方向。"
+        },
+        {
+          "label": "P",
+          "title": "投影",
+          "body": "方法可以把更新限制在特定子空间或正交适配器模块中，以减少对其他能力的干扰。"
+        },
+        {
+          "label": "C",
+          "title": "有界约束",
+          "body": "信赖域、裁剪或有界重参数化能够稳定更新，避免遗忘过程出现失控漂移。"
+        },
+        {
+          "label": "M",
+          "title": "掩码",
+          "body": "稀疏或剪枝类方法通过将对 forget 集重要的参数置零，引入更难逆转的结构性编辑。"
+        }
+      ]
+    },
+    {
+      "id": "taxonomy",
+      "nav_label": "分类",
+      "kicker": "分类",
+      "title": "六类反复出现的方法家族勾勒出 LoRA 机器遗忘版图",
+      "wide_heading": true,
+      "section_note": "论文把这些方法视为同一适配器空间算子在不同假设下的实例化，因此分类不仅是列举名称，更是比较作用位置与代价结构。",
+      "theme": "plain",
+      "layout": "showcase",
+      "wide_figure": {
+        "src": "/papers/lora-unlearning/assets/method-taxonomy-grid.png",
+        "alt": "Grid showing six method-family diagrams for LoRA-based unlearning",
+        "caption": "六类方法家族按照它们如何构造、变换、约束、路由或稀疏化适配器空间更新来组织。",
+        "class_name": "figure-taxonomy-grid"
+      },
+      "cards_layout": "lenses",
+      "cards": [
+        {
+          "label": "GA",
+          "title": "梯度式方法",
+          "body": "直接在 LoRA 空间塑造 forget 与 retain 损失，做法简洁，但如果缺少显式稳定机制，容易出现过冲。"
+        },
+        {
+          "label": "IF",
+          "title": "影响函数式方法",
+          "body": "借助逆 Hessian 风格的近似，估计“删去样本后再训练”会带来的适配器参数变化。"
+        },
+        {
+          "label": "FI",
+          "title": "Fisher 信息式方法",
+          "body": "沿着曲率更敏感的方向约束或初始化 LoRA 更新，以提升稳定性并把容量更精准地对准 forget 集。"
+        },
+        {
+          "label": "SC",
+          "title": "结构与持续式方法",
+          "body": "通过多适配器分配、路由或正交组合来承载多次删除请求，更关注持续场景下的干扰控制。"
+        },
+        {
+          "label": "BD",
+          "title": "有界动力学方法",
+          "body": "显式限制参数漂移，避免重复或激进的删除步骤拖垮 retain 侧行为。"
+        },
+        {
+          "label": "PS",
+          "title": "剪枝与稀疏变体",
+          "body": "把遗忘理解为对适配器容量的选择性移除，通常更紧凑，但回滚难度也更高。"
+        }
+      ]
+    },
+    {
+      "id": "evaluation",
+      "nav_label": "评测",
+      "kicker": "评测",
+      "title": "固定的 TOFU 协议揭示了遗忘、效用与泄露之间的不同权衡",
+      "wide_heading": true,
+      "section_note": "评测同时包含单次 TOFU 对比与持续删除轨迹，用来展示不同适配器空间设计在遗忘、效用与隐私前沿上的位置。",
+      "layout": "atlas",
+      "cards_layout": "stats",
+      "cards": [
+        {
+          "metric": "0.2108",
+          "title": "最佳 Prob 遗忘",
+          "body": "Prune/Sparse 在单次删除对比中取得最低的 forget_Q_A_Prob。",
+          "variant": "good"
+        },
+        {
+          "metric": "0.4030",
+          "title": "最佳 ROUGE 遗忘",
+          "body": "GA 在统一评测器和相同优化预算下取得最低的 forget_Q_A_ROUGE。",
+          "variant": "good"
+        },
+        {
+          "metric": "0.4261",
+          "title": "最佳持续效用",
+          "body": "结构化的正交组合在 5 轮持续删除终点上保留了最强的整体效用。",
+          "variant": "good"
+        },
+        {
+          "metric": "-29.73",
+          "title": "PrivLeak 最接近重训",
+          "body": "在隐私泄露诊断上，Fisher 方法最接近只用保留集重训得到的参考模型。",
+          "variant": "neutral"
+        }
+      ],
+      "figure": {
+        "src": "/papers/lora-unlearning/assets/tofu-evaluation-board-wide.png",
+        "alt": "Wide evaluation board combining the TOFU bubble-rank summary with four continual-deletion metric plots",
+        "caption": "单次 TOFU 结果与持续删除轨迹共同概括了各类适配器空间方法的遗忘、效用与隐私表现。",
+        "class_name": "figure-evaluation-board"
+      },
+      "prose_large": true,
+      "paragraphs": [
+        "评测部分固定了冻结的 Llama-3.2-1B-Instruct 主干、统一的 LoRA 配置、官方 TOFU forget05/retain95 划分，以及 OpenUnlearning 风格的一致评测器。这样做的目的是比较更新规则本身，而不是把骨干模型或数据构造差异混在一起。",
+        "在这一协议下，不同适配器家族会落在不同的遗忘-效用前沿点上。持续删除实验则提供了系统视角：朴素的适配器累积会带来轻度干扰，而近似正交的设计能让遗忘过程更平滑，并在多轮删除中更好地保留效用。"
+      ],
+      "highlights": [
+        "统一骨干与评测器",
+        "单次删除前沿比较",
+        "持续删除过程轨迹",
+        "隐私泄露是同等重要的维度"
+      ]
+    },
+    {
+      "id": "discussion",
+      "nav_label": "讨论",
+      "kicker": "讨论",
+      "title": "实践陷阱、部署压力与治理层面的开放问题",
+      "theme": "soft",
+      "layout": "plain",
+      "paragraphs": [
+        "论文更大的判断是：LoRA 机器遗忘应被当作基础设施来评估，而不只是一个 benchmark trick。稳定性、访问假设、持续组合和可逆性，都是一线部署中的核心问题。",
+        "这也意味着关注点不能只停留在单次实验数值上，而要转向系统最终能拿出哪些可核验产物，例如删除日志、适配器差分、路由/合并策略，以及某个检查点为何能被解释为符合既定遗忘流程的证据。"
+      ],
+      "cards_layout": "stack",
+      "cards": [
+        {
+          "kind": "callout",
+          "title": "当前主要问题",
+          "items": [
+            "朴素的梯度上升容易过冲，并伤及与删除目标无关的效用。",
+            "影响函数和 Fisher 方法更接近重训语义，但也要求更强的访问条件和更重的估计过程。",
+            "持续删除需要适配器生命周期策略，而不是一次次盲目累加更新。",
+            "剪枝方法有压缩优势，但当重要性估计不稳定时会变得脆弱。"
+          ]
+        },
+        {
+          "kind": "callout",
+          "title": "领域正在走向哪里",
+          "items": [
+            "内建稳定性的算子设计，例如显式边界或信赖域机制。",
+            "比全量二阶估计更便宜、但更适合 LoRA 的曲率代理。",
+            "面向长周期事件的持续遗忘机制，包括路由、整合与回收策略。",
+            "专门针对多适配器 PEFT 部署的威胁模型与评测器。"
+          ]
+        },
+        {
+          "label": "面向治理的产物",
+          "body": "未来的部署流程可能需要签名清单、适配器差分、删除请求日志和退役策略，让遗忘结果既可解释，也能被审计。",
+          "variant": "accent"
+        }
+      ]
+    }
+  ],
+  "citation": {
+    "kicker": "引用",
+    "nav_label": "引用",
+    "title": "直接引用这篇论文",
+    "note": "在正式刊物版本可用之前，请优先引用 SSRN 预印本版本。",
+    "button_label": "复制 BibTeX",
+    "copied_label": "已复制",
+    "error_label": "复制失败",
+    "bibtex": "@misc{li2025loraunlearningsurvey,\n  title        = {A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation},\n  author       = {Delong Li and Guangsheng Yu and Xu Wang and Yanna Jiang and Wencheng Yang and Bin Liang and Wei Ni},\n  year         = {2025},\n  howpublished = {SSRN preprint}\n}"
+  },
+  "footer": {
+    "enabled": false,
+    "left": "Static paper visualization for the publication.",
+    "right": "Prepared as a portable static site package."
+  }
+}

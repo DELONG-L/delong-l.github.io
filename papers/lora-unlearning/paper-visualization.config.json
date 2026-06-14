@@ -1,0 +1,349 @@
+{
+  "site": {
+    "title": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "short_title": "LoRA Unlearning",
+    "lang": "en",
+    "kicker": "2025 · survey paper · machine unlearning",
+    "subtitle": "An adapter-centric survey of how LoRA modules forget, preserve utility, and support auditable deletion workflows in large language models.",
+    "meta_description": "A readability-first paper visualization for A Survey of LoRA-based Machine Unlearning for LLMs, covering the adapter-space operator view, six method families, and a TOFU-based evaluation protocol.",
+    "theme_color": "#faf9f5",
+    "canonical_url": "https://delong-l.github.io/papers/lora-unlearning/",
+    "og_url": "https://delong-l.github.io/papers/lora-unlearning/",
+    "og_image": "https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png",
+    "alternates": [
+      {
+        "hreflang": "en",
+        "href": "https://delong-l.github.io/papers/lora-unlearning/"
+      },
+      {
+        "hreflang": "zh-CN",
+        "href": "https://delong-l.github.io/zh/papers/lora-unlearning/"
+      },
+      {
+        "hreflang": "x-default",
+        "href": "https://delong-l.github.io/papers/lora-unlearning/"
+      }
+    ],
+    "brand_home_url": "/",
+    "brand_aria_label": "Back to top",
+    "show_brand_mark": false,
+    "language_switch": {
+      "aria_label": "Language switch",
+      "links": [
+        {
+          "label": "EN",
+          "href": "/papers/lora-unlearning/",
+          "active": true
+        },
+        {
+          "label": "中文",
+          "href": "/zh/papers/lora-unlearning/"
+        }
+      ]
+    },
+    "links": [
+      {
+        "label": "Paper PDF",
+        "href": "paper.pdf",
+        "primary": true
+      },
+      {
+        "label": "Preprint",
+        "href": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522"
+      },
+      {
+        "label": "BibTeX",
+        "href": "#citation"
+      }
+    ]
+  },
+  "authors": [
+    "Delong Li",
+    "Guangsheng Yu",
+    "Xu Wang",
+    "Yanna Jiang",
+    "Wencheng Yang",
+    "Bin Liang",
+    "Wei Ni"
+  ],
+  "affiliations": "University of Technology Sydney · University of Southern Queensland · Edith Cowan University",
+  "hero_facts": [
+    {
+      "label": "Method families",
+      "value": "6 adapter-space categories"
+    },
+    {
+      "label": "Operator lens",
+      "value": "s, G, P, C, M"
+    },
+    {
+      "label": "Evaluation",
+      "value": "TOFU + continual deletion + PrivLeak"
+    }
+  ],
+  "hero_figure": {
+    "src": "assets/survey-roadmap.png",
+    "alt": "Roadmap showing how the survey moves from motivation to unified view, taxonomy, evaluation, and governance",
+    "caption": "The survey roadmap connects the motivation for LoRA-based unlearning with the unified adapter-space view, method taxonomy, evaluation protocol, and deployment considerations.",
+    "class_name": "figure-roadmap"
+  },
+  "summary": {
+    "kicker": "Summary",
+    "nav_label": "Summary",
+    "title": "What this paper contributes",
+    "cards_layout": "feature-grid",
+    "cards": [
+      {
+        "label": "01",
+        "title": "An adapter-centric problem formulation",
+        "body": "The survey formalizes LoRA unlearning under a frozen backbone and explicit retain/forget splits, making the adapter checkpoint the locus of deletion."
+      },
+      {
+        "label": "02",
+        "title": "A unified operator view",
+        "body": "Methods are decomposed into score construction, preconditioning, projection, bounding, and masking, which makes cross-family comparisons more coherent."
+      },
+      {
+        "label": "03",
+        "title": "A six-family taxonomy",
+        "body": "Existing approaches are organized into gradient-based, influence-based, Fisher-informed, structural/continual, bounded-dynamics, and pruning/sparse variants."
+      },
+      {
+        "label": "04",
+        "title": "Evaluation and deployment guidance",
+        "body": "The paper consolidates TOFU-style reporting, utility/forgetting/privacy trade-offs, continual deletion behavior, and governance-facing deployment concerns."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "abstract",
+      "nav_label": "Abstract",
+      "kicker": "Abstract",
+      "title": "Why LoRA-based unlearning deserves its own survey",
+      "theme": "soft",
+      "layout": "panorama",
+      "wide_figure": {
+        "src": "assets/system-overview.jpeg",
+        "alt": "Machine unlearning shown as a system-level capability across deployed LLM ecosystems",
+        "caption": "LoRA-based unlearning places deletion logic in lightweight adapter modules while preserving the deployed backbone as the shared model substrate.",
+        "class_name": "figure-system-overview"
+      },
+      "paragraphs": [
+        "Machine unlearning is becoming a practical requirement for deployed LLMs, but many existing techniques assume full-model access and retraining budgets that are hard to sustain in real systems.",
+        "At the same time, modern adaptation pipelines increasingly rely on parameter-efficient fine-tuning, especially LoRA-style modules that are attached to a frozen backbone and shipped as lightweight checkpoints.",
+        "This survey focuses on adapter-centric forgetting: how deletion requests can be implemented primarily in LoRA space, how different method families trade off forgetting against retention, and what those choices imply for privacy leakage, continual updates, and operational governance."
+      ],
+      "highlights": [
+        "Privacy and compliance pressure",
+        "Frozen backbone assumption",
+        "PEFT-first deployment reality",
+        "Repeated deletion requests"
+      ]
+    },
+    {
+      "id": "framework",
+      "nav_label": "Framework",
+      "kicker": "Framework",
+      "title": "A unified adapter-space view of forgetting in LoRA modules",
+      "wide_heading": true,
+      "section_note": "The paper argues that LoRA unlearning is best understood as an update-design problem over adapters rather than a collection of unrelated recipes.",
+      "theme": "plain",
+      "layout": "framework",
+      "figure": {
+        "src": "assets/adapter-space-view.png",
+        "alt": "Illustrative loss landscape for the unified adapter-space view",
+        "caption": "Different families act on different slots of the same adapter-space update operator."
+      },
+      "equation": {
+        "label": "Operator view",
+        "value": "Δφ = M ∘ C ∘ P ∘ G(s(φ; D_f, D_r))",
+        "body": "Scores from forget and retain data are transformed by preconditioning, projection, bounding, and optional masking before deployment."
+      },
+      "cards": [
+        {
+          "label": "s",
+          "title": "Score signal",
+          "body": "The raw unlearning direction usually comes from forget and retain losses, often expressed as a gradient mix."
+        },
+        {
+          "label": "G",
+          "title": "Preconditioner",
+          "body": "Identity steps, influence approximations, and Fisher-style curvature estimates all change how aggressively the signal is applied."
+        },
+        {
+          "label": "P",
+          "title": "Projection",
+          "body": "Methods can route updates into specific subspaces or orthogonal adapter modules to limit interference."
+        },
+        {
+          "label": "C",
+          "title": "Bounding",
+          "body": "Trust regions, clipping, or bounded reparameterizations stabilize updates and reduce runaway forgetting dynamics."
+        },
+        {
+          "label": "M",
+          "title": "Masking",
+          "body": "Sparse or pruning-based variants add irreversible structural edits by zeroing parameters judged important to the forget set."
+        }
+      ]
+    },
+    {
+      "id": "taxonomy",
+      "nav_label": "Taxonomy",
+      "kicker": "Taxonomy",
+      "title": "Six recurrent families organize the LoRA unlearning landscape",
+      "wide_heading": true,
+      "section_note": "The taxonomy is presented as a family-level map of how methods instantiate the same adapter-space operator under different assumptions.",
+      "theme": "plain",
+      "layout": "showcase",
+      "wide_figure": {
+        "src": "assets/method-taxonomy-grid.png",
+        "alt": "Grid showing six method-family diagrams for LoRA-based unlearning",
+        "caption": "Six method families are organized by how they construct, transform, constrain, route, or sparsify the adapter-space update.",
+        "class_name": "figure-taxonomy-grid"
+      },
+      "cards_layout": "lenses",
+      "cards": [
+        {
+          "label": "GA",
+          "title": "Gradient-based methods",
+          "body": "Directly shape forget and retain losses in LoRA space, which keeps the method simple but can become unstable without explicit safeguards."
+        },
+        {
+          "label": "IF",
+          "title": "Influence-based methods",
+          "body": "Approximate retraining-induced parameter changes by using inverse-Hessian style reasoning over the adapter update."
+        },
+        {
+          "label": "FI",
+          "title": "Fisher-informed methods",
+          "body": "Constrain or initialize LoRA updates along curvature-sensitive directions to improve stability and align capacity with the forget set."
+        },
+        {
+          "label": "SC",
+          "title": "Structural and continual methods",
+          "body": "Allocate or route deletion events into multiple adapters, often with orthogonality or composition constraints for repeated requests."
+        },
+        {
+          "label": "BD",
+          "title": "Bounded-dynamics methods",
+          "body": "Limit parameter drift explicitly so repeated or aggressive deletion steps do not collapse retain behavior."
+        },
+        {
+          "label": "PS",
+          "title": "Pruning and sparse variants",
+          "body": "Treat forgetting as selective removal of adapter capacity, which can improve compactness but makes rollback harder."
+        }
+      ]
+    },
+    {
+      "id": "evaluation",
+      "nav_label": "Evaluation",
+      "kicker": "Evaluation",
+      "title": "A fixed TOFU protocol exposes different forgetting-utility-leakage trade-offs",
+      "wide_heading": true,
+      "section_note": "The evaluation combines single-shot TOFU comparisons with continual deletion traces, showing how adapter-space design choices move along the forgetting-utility-privacy frontier.",
+      "layout": "atlas",
+      "cards_layout": "stats",
+      "cards": [
+        {
+          "metric": "0.2108",
+          "title": "Best Prob forgetting",
+          "body": "Prune/Sparse achieves the lowest forget_Q_A_Prob in the single-shot comparison.",
+          "variant": "good"
+        },
+        {
+          "metric": "0.4030",
+          "title": "Best ROUGE forgetting",
+          "body": "GA gives the lowest forget_Q_A_ROUGE under the shared evaluator and optimization budget.",
+          "variant": "good"
+        },
+        {
+          "metric": "0.4261",
+          "title": "Best continual utility",
+          "body": "Structural orthogonal composition preserves the strongest utility at the 5-round continual endpoint.",
+          "variant": "good"
+        },
+        {
+          "metric": "-29.73",
+          "title": "Closest PrivLeak to retrain",
+          "body": "Fisher is closest to the retain-only retrain reference on the privacy-leakage diagnostic.",
+          "variant": "neutral"
+        }
+      ],
+      "figure": {
+        "src": "assets/tofu-evaluation-board-wide.png",
+        "alt": "Wide evaluation board combining the TOFU bubble-rank summary with four continual-deletion metric plots",
+        "caption": "Single-shot TOFU results and continual deletion traces summarize the forgetting, utility, and privacy behavior of the compared adapter-space methods.",
+        "class_name": "figure-evaluation-board"
+      },
+      "prose_large": true,
+      "paragraphs": [
+        "The evaluation section fixes a frozen Llama-3.2-1B-Instruct backbone, a constant LoRA configuration, the official TOFU forget05/retain95 split, and a unified OpenUnlearning-style evaluator. The goal is to compare update rules rather than confound them with different backbones or data construction.",
+        "Under that protocol, different adapter families move to different points on the forgetting-utility frontier. The continual experiment adds a systems view: naive adapter accumulation shows mild interference, while approximate orthogonality yields smoother forgetting progress and slightly better utility preservation across deletion rounds."
+      ],
+      "highlights": [
+        "Shared backbone and evaluator",
+        "Single-shot frontier view",
+        "Continual deletion trajectories",
+        "Privacy leakage remains first-class"
+      ]
+    },
+    {
+      "id": "discussion",
+      "nav_label": "Discussion",
+      "kicker": "Discussion",
+      "title": "Practical pitfalls, deployment pressure, and open governance questions",
+      "theme": "soft",
+      "layout": "plain",
+      "paragraphs": [
+        "The paper's broader argument is that LoRA unlearning should be evaluated as infrastructure, not just as a benchmark trick. Stability, access assumptions, continual composition, and reversibility are first-order deployment questions.",
+        "That perspective also shifts attention from one-off performance numbers to the artifacts a deployment can actually produce: deletion logs, adapter deltas, route/merge policies, and evidence that a given checkpoint reflects the intended unlearning workflow."
+      ],
+      "cards_layout": "stack",
+      "cards": [
+        {
+          "kind": "callout",
+          "title": "Current pitfalls",
+          "items": [
+            "Naive gradient ascent can overshoot and damage unrelated utility.",
+            "Influence and Fisher methods improve fidelity but demand stronger access and more estimation machinery.",
+            "Continual deletion needs adapter lifecycle policies rather than repeated blind accumulation.",
+            "Pruning is appealing for compression but becomes brittle when importance estimates are noisy."
+          ]
+        },
+        {
+          "kind": "callout",
+          "title": "Where the field is moving",
+          "items": [
+            "Stability-by-design operators with explicit bounds or trust regions.",
+            "LoRA-tailored curvature surrogates that are cheaper than full second-order estimation.",
+            "Long-horizon continual unlearning with routing and consolidation across events.",
+            "Threat models and evaluators that are specific to multi-adapter PEFT deployments."
+          ]
+        },
+        {
+          "label": "Governance-ready artifacts",
+          "body": "Future deployments may need signed manifests, adapter deltas, deletion-request logs, and retirement policies that make unlearning outcomes explainable and auditable.",
+          "variant": "accent"
+        }
+      ]
+    }
+  ],
+  "citation": {
+    "kicker": "Citation",
+    "nav_label": "Citation",
+    "title": "Cite the paper directly",
+    "note": "Use the SSRN preprint version until a final venue version is available.",
+    "button_label": "Copy BibTeX",
+    "copied_label": "Copied",
+    "error_label": "Copy failed",
+    "bibtex": "@misc{li2025loraunlearningsurvey,\n  title        = {A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation},\n  author       = {Delong Li and Guangsheng Yu and Xu Wang and Yanna Jiang and Wencheng Yang and Bin Liang and Wei Ni},\n  year         = {2025},\n  howpublished = {SSRN preprint}\n}"
+  },
+  "footer": {
+    "enabled": false,
+    "left": "Static paper visualization for the publication.",
+    "right": "Prepared as a portable static site package."
+  }
+}
