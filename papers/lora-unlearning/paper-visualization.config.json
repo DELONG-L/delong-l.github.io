@@ -157,7 +157,7 @@
       },
       "equation": {
         "label": "Operator view",
-        "value": "Δφ = M ∘ C ∘ P ∘ G(s(φ; D_f, D_r))",
+        "value": "Δφ = M∘C∘P∘G(s(φ;D_f,D_r))",
         "body": "Scores from forget and retain data are transformed by preconditioning, projection, bounding, and optional masking before deployment."
       },
       "cards": [

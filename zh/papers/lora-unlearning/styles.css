@@ -495,9 +495,28 @@ html[lang="zh-CN"] .prose-large {
   gap: 1rem;
 }
 
+.panorama-copy.solo {
+  max-width: 1000px;
+  margin: -0.25rem 0 2.4rem;
+}
+
 .panorama-copy .prose,
 .atlas-copy .prose {
   max-width: 68ch;
+}
+
+.panorama-copy.solo .prose {
+  max-width: none;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.panorama-copy.solo .pill-list {
+  max-width: 920px;
+}
+
+.panorama-copy.solo + .wide-media {
+  margin-top: 0;
 }
 
 .text-stack,
@@ -691,6 +710,10 @@ html[lang="zh-CN"] .generic-card p {
   min-width: 0;
 }
 
+.framework-equation {
+  margin-bottom: 2rem;
+}
+
 .equation-label {
   display: block;
   color: var(--muted);
@@ -707,9 +730,9 @@ html[lang="zh-CN"] .generic-card p {
   margin-top: 0.5rem;
   color: var(--ink);
   max-width: 100%;
-  overflow-x: auto;
+  overflow-x: visible;
   padding-bottom: 0.25rem;
-  font-size: clamp(1.45rem, 2.7vw, 2.35rem);
+  font-size: clamp(1.1rem, 2vw, 2rem);
   font-weight: 500;
   line-height: 1.15;
   white-space: nowrap;
@@ -991,5 +1014,18 @@ pre {
   .stat-panel,
   .generic-card {
     padding: 22px;
+  }
+
+  .panorama-copy.solo {
+    margin-bottom: 1.8rem;
+  }
+
+  .panorama-copy.solo .prose {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .equation-card code {
+    font-size: 13px;
   }
 }

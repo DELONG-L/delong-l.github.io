@@ -459,8 +459,6 @@ function renderSplitSection(shell, section) {
 
 function renderPanoramaSection(shell, section) {
   const figure = buildFigure(section.wide_figure || section.figure, "wide-media panorama-media");
-  if (figure) shell.appendChild(figure);
-
   const proseWrap = create("div", "panorama-copy");
   appendParagraphs(proseWrap, section.paragraphs || [], section.prose_large ? "prose prose-large" : "prose");
   appendHighlights(proseWrap, section.highlights || []);
@@ -471,31 +469,37 @@ function renderPanoramaSection(shell, section) {
     layout.appendChild(proseWrap);
     layout.appendChild(cards);
     shell.appendChild(layout);
+    if (figure) shell.appendChild(figure);
   } else if (cards) {
     shell.appendChild(cards);
+    if (figure) shell.appendChild(figure);
   } else if (proseWrap.childElementCount) {
+    proseWrap.classList.add("solo");
     shell.appendChild(proseWrap);
+    if (figure) shell.appendChild(figure);
+  } else if (figure) {
+    shell.appendChild(figure);
   }
 }
 
 function renderFrameworkSection(shell, section) {
+  if (section.equation?.value) {
+    const equationCard = create("article", "equation-card framework-equation");
+    equationCard.appendChild(create("span", "equation-label", section.equation.label || "Formalization"));
+    equationCard.appendChild(create("code", "", section.equation.value));
+    if (section.equation.body) equationCard.appendChild(create("p", "", section.equation.body));
+    shell.appendChild(equationCard);
+  }
+
   const layout = create("div", "framework-layout");
   const figure = buildFigure(section.figure, "media-card figure-focus");
   if (figure) layout.appendChild(figure);
 
   const copy = create("div", "framework-copy");
-  if (section.equation?.value) {
-    const equationCard = create("article", "equation-card");
-    equationCard.appendChild(create("span", "equation-label", section.equation.label || "Formalization"));
-    equationCard.appendChild(create("code", "", section.equation.value));
-    if (section.equation.body) equationCard.appendChild(create("p", "", section.equation.body));
-    copy.appendChild(equationCard);
-  }
-
   const definitions = renderCardLayout(section.cards || [], "definitions", "definitions");
   if (definitions) copy.appendChild(definitions);
-  layout.appendChild(copy);
-  shell.appendChild(layout);
+  if (copy.childElementCount) layout.appendChild(copy);
+  if (layout.childElementCount) shell.appendChild(layout);
 }
 
 function renderLifecycleSection(shell, section) {
