@@ -671,22 +671,27 @@
             border-color: var(--primary-active);
         }
 
-        .icon-link {
-            width: 40px;
-            height: 40px;
+        .social-link {
+            min-height: 40px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            padding: 0 14px;
+            border-radius: 999px;
             border: 1px solid var(--hairline);
             background: var(--canvas);
             color: var(--ink);
             text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 220ms ease;
         }
 
-        .icon-link:hover {
+        .social-link:hover {
             color: var(--primary-active);
             border-color: rgba(204, 120, 92, 0.45);
+            transform: translateY(-2px);
         }
 
         .project-grid {
@@ -758,13 +763,20 @@
 
         .socials {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        .socials .icon-link {
+        .socials .social-link {
             color: var(--on-dark);
             background: var(--surface-dark-elevated);
             border-color: rgba(250, 249, 245, 0.12);
+        }
+
+        .socials .social-link:hover {
+            color: var(--primary);
+            background: rgba(204, 120, 92, 0.08);
+            border-color: rgba(204, 120, 92, 0.45);
         }
 
         footer {
@@ -1271,18 +1283,10 @@
                             <strong>Delong.Li@uts.edu.au</strong>
                         </a>
                         <div class="socials" aria-label="Contact links">
-                            <a class="icon-link" href="https://github.com/DELONG-L" target="_blank" rel="noopener" aria-label="GitHub">
-                                <span class="social-glyph" aria-hidden="true">GH</span>
-                            </a>
-                            <a class="icon-link" href="https://www.linkedin.com/in/delong-li-144941353" target="_blank" rel="noopener" aria-label="LinkedIn">
-                                <span class="social-glyph" aria-hidden="true">in</span>
-                            </a>
-                            <a class="icon-link" href="https://scholar.google.com/citations?user=hItKYpwAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar">
-                                <span class="social-glyph" aria-hidden="true">GS</span>
-                            </a>
-                            <a class="icon-link" href="https://orcid.org/0009-0000-8648-8921" target="_blank" rel="noopener" aria-label="ORCID">
-                                <span class="social-glyph" aria-hidden="true">iD</span>
-                            </a>
+                            <a class="social-link" href="https://github.com/DELONG-L" target="_blank" rel="noopener">GitHub</a>
+                            <a class="social-link" href="https://www.linkedin.com/in/delong-li-144941353" target="_blank" rel="noopener">LinkedIn</a>
+                            <a class="social-link" href="https://scholar.google.com/citations?user=hItKYpwAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+                            <a class="social-link" href="https://orcid.org/0009-0000-8648-8921" target="_blank" rel="noopener">ORCID</a>
                         </div>
                     </div>
                 </div>
