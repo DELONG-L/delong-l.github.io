@@ -1,11 +1,12 @@
 {
   "site": {
     "title": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "og_title": "LoRA-based Machine Unlearning for LLMs | Survey & Evaluation Guide",
     "short_title": "LoRA Unlearning",
     "lang": "en",
     "kicker": "2025 · survey paper · machine unlearning",
     "subtitle": "An adapter-centric survey of how LoRA modules forget, preserve utility, and support auditable deletion workflows in large language models.",
-    "meta_description": "A readability-first paper visualization for A Survey of LoRA-based Machine Unlearning for LLMs, covering the adapter-space operator view, six method families, and a TOFU-based evaluation protocol.",
+    "meta_description": "Visual survey of LoRA-based machine unlearning for LLMs, covering adapter-space operators, six method families, TOFU evaluation, privacy, and continual deletion.",
     "theme_color": "#faf9f5",
     "canonical_url": "https://delong-l.github.io/papers/lora-unlearning/",
     "og_url": "https://delong-l.github.io/papers/lora-unlearning/",

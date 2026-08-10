@@ -1,11 +1,12 @@
 {
   "site": {
     "title": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "og_title": "LoRA 大模型机器遗忘综述｜方法分类、评测与部署导读",
     "short_title": "LoRA遗忘综述",
     "lang": "zh-CN",
     "kicker": "2025 · 综述论文 · 机器遗忘",
     "subtitle": "一篇以适配器为中心的综述，讨论 LoRA 模块如何执行遗忘、维持效用，并支撑面向大语言模型的可审计删除流程。",
-    "meta_description": "这是一篇面向可读性的论文可视化页面，对《A Survey of LoRA-based Machine Unlearning for LLMs》中的适配器空间算子视角、六类方法谱系与基于 TOFU 的评测协议进行梳理。",
+    "meta_description": "LoRA 大模型机器遗忘综述的中文可视化导读，涵盖统一的适配器空间算子视角、六类方法谱系、TOFU 评测协议、隐私风险、持续删除与部署治理。",
     "theme_color": "#faf9f5",
     "canonical_url": "https://delong-l.github.io/zh/papers/lora-unlearning/",
     "og_url": "https://delong-l.github.io/zh/papers/lora-unlearning/",

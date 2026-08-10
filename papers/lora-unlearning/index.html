@@ -3,20 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</title>
-  <meta name="description" content="A readability-first paper visualization for A Survey of LoRA-based Machine Unlearning for LLMs, covering the adapter-space operator view, six method families, and a TOFU-based evaluation protocol.">
+  <title>LoRA-based Machine Unlearning for LLMs | Survey &amp; Evaluation Guide</title>
+  <meta name="description" content="Visual survey of LoRA-based machine unlearning for LLMs, covering adapter-space operators, six method families, TOFU evaluation, privacy, and continual deletion.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#faf9f5">
   <link rel="canonical" href="https://delong-l.github.io/papers/lora-unlearning/">
 
-  <meta property="og:title" content="A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation">
-  <meta property="og:description" content="A readability-first paper visualization for A Survey of LoRA-based Machine Unlearning for LLMs, covering the adapter-space operator view, six method families, and a TOFU-based evaluation protocol.">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="LoRA-based Machine Unlearning for LLMs | Survey &amp; Evaluation Guide">
+  <meta property="og:description" content="Visual survey covering adapter-space operators, six LoRA unlearning method families, TOFU evaluation, privacy, and continual deletion.">
+  <meta property="og:type" content="article">
   <meta property="og:url" content="https://delong-l.github.io/papers/lora-unlearning/">
   <meta property="og:image" content="https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation">
-  <meta name="twitter:description" content="A readability-first paper visualization for A Survey of LoRA-based Machine Unlearning for LLMs, covering the adapter-space operator view, six method families, and a TOFU-based evaluation protocol.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LoRA-based Machine Unlearning for LLMs | Survey Guide">
+  <meta name="twitter:description" content="Adapter-space taxonomy, six method families, TOFU evaluation, privacy, and continual deletion for LoRA-based LLM unlearning.">
+  <meta name="twitter:image" content="https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "description": "A survey of adapter-centric machine unlearning for large language models, covering a unified operator view, six method families, evaluation, privacy, and continual deletion.",
+    "inLanguage": "en",
+    "datePublished": "2025",
+    "url": "https://delong-l.github.io/papers/lora-unlearning/",
+    "mainEntityOfPage": "https://delong-l.github.io/papers/lora-unlearning/",
+    "sameAs": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522",
+    "identifier": "SSRN:5866522",
+    "image": "https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png",
+    "keywords": ["machine unlearning", "LoRA", "large language models", "TOFU", "privacy", "continual deletion"],
+    "author": [
+      {"@type": "Person", "name": "Delong Li", "url": "https://delong-l.github.io/"},
+      {"@type": "Person", "name": "Guangsheng Yu"},
+      {"@type": "Person", "name": "Xu Wang"},
+      {"@type": "Person", "name": "Yanna Jiang"},
+      {"@type": "Person", "name": "Wencheng Yang"},
+      {"@type": "Person", "name": "Bin Liang"},
+      {"@type": "Person", "name": "Wei Ni"}
+    ],
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://delong-l.github.io/papers/lora-unlearning/paper.pdf",
+      "encodingFormat": "application/pdf"
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,9 +74,56 @@
   </header>
 
   <main id="top">
-    <section class="hero" id="hero-root"></section>
-    <section class="section" id="summary-root"></section>
-    <div id="sections-root"></div>
+    <section class="hero" id="hero-root">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">2025 · survey paper · machine unlearning</p>
+          <h1>A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</h1>
+          <p class="deck">An adapter-centric survey of how LoRA modules forget, preserve utility, and support auditable deletion workflows in large language models.</p>
+          <div class="author-block">
+            <p class="authors">Delong Li, Guangsheng Yu, Xu Wang, Yanna Jiang, Wencheng Yang, Bin Liang, Wei Ni</p>
+            <p class="affiliations">University of Technology Sydney · University of Southern Queensland · Edith Cowan University</p>
+          </div>
+          <div class="button-row">
+            <a class="button primary" href="paper.pdf" target="_blank" rel="noopener">Paper PDF</a>
+            <a class="button secondary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522" target="_blank" rel="noopener">Preprint</a>
+            <a class="button secondary" href="#citation">BibTeX</a>
+          </div>
+          <div class="hero-facts">
+            <article><span class="fact-label">Method families</span><strong>6 adapter-space categories</strong></article>
+            <article><span class="fact-label">Operator lens</span><strong>s, G, P, C, M</strong></article>
+            <article><span class="fact-label">Evaluation</span><strong>TOFU + continual deletion + PrivLeak</strong></article>
+          </div>
+        </div>
+        <figure class="hero-figure figure-roadmap">
+          <img src="assets/survey-roadmap.png" alt="Roadmap from LoRA unlearning motivation to taxonomy, evaluation, and governance">
+          <figcaption>The survey connects the motivation for LoRA-based unlearning with a unified adapter-space view, method taxonomy, evaluation protocol, and deployment considerations.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="section" id="summary-root">
+      <div class="shell">
+        <div class="section-heading"><p class="kicker">Summary</p><h2>What this paper contributes</h2></div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-index">01</span><h3>An adapter-centric problem formulation</h3><p>The survey formalizes LoRA unlearning under a frozen backbone and explicit retain and forget splits, making the adapter checkpoint the locus of deletion.</p></article>
+          <article class="feature-card"><span class="feature-index">02</span><h3>A unified operator view</h3><p>Methods are decomposed into score construction, preconditioning, projection, bounding, and masking for coherent cross-family comparison.</p></article>
+          <article class="feature-card"><span class="feature-index">03</span><h3>A six-family taxonomy</h3><p>Existing approaches are organized into gradient, influence, Fisher, structural, bounded-dynamics, and pruning or sparse variants.</p></article>
+          <article class="feature-card"><span class="feature-index">04</span><h3>Evaluation and deployment guidance</h3><p>The paper consolidates TOFU-style reporting, utility and privacy trade-offs, continual deletion behavior, and governance concerns.</p></article>
+        </div>
+      </div>
+    </section>
+    <div id="sections-root">
+      <section class="section band-soft" id="abstract">
+        <div class="shell">
+          <div class="section-heading"><p class="kicker">Abstract</p><h2>Why LoRA-based unlearning deserves its own survey</h2></div>
+          <div class="prose">
+            <p>Machine unlearning is becoming a practical requirement for deployed LLMs, but many existing techniques assume full-model access and retraining budgets that are difficult to sustain in real systems.</p>
+            <p>Modern adaptation pipelines increasingly rely on parameter-efficient fine-tuning, especially LoRA modules attached to a frozen backbone and distributed as lightweight checkpoints.</p>
+            <p>This survey focuses on adapter-centric forgetting: how deletion requests can be implemented primarily in LoRA space, how method families trade forgetting against retention, and what those choices imply for privacy leakage, continual updates, and operational governance.</p>
+          </div>
+        </div>
+      </section>
+    </div>
     <section class="section band-soft" id="citation"></section>
   </main>
 
@@ -54,11 +134,12 @@
 {
   "site": {
     "title": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "og_title": "LoRA-based Machine Unlearning for LLMs | Survey & Evaluation Guide",
     "short_title": "LoRA Unlearning",
     "lang": "en",
     "kicker": "2025 · survey paper · machine unlearning",
     "subtitle": "An adapter-centric survey of how LoRA modules forget, preserve utility, and support auditable deletion workflows in large language models.",
-    "meta_description": "A readability-first paper visualization for A Survey of LoRA-based Machine Unlearning for LLMs, covering the adapter-space operator view, six method families, and a TOFU-based evaluation protocol.",
+    "meta_description": "Visual survey of LoRA-based machine unlearning for LLMs, covering adapter-space operators, six method families, TOFU evaluation, privacy, and continual deletion.",
     "theme_color": "#faf9f5",
     "canonical_url": "https://delong-l.github.io/papers/lora-unlearning/",
     "og_url": "https://delong-l.github.io/papers/lora-unlearning/",

@@ -3,20 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</title>
-  <meta name="description" content="这是一篇面向可读性的论文可视化页面，对《A Survey of LoRA-based Machine Unlearning for LLMs》中的适配器空间算子视角、六类方法谱系与基于 TOFU 的评测协议进行梳理。">
+  <title>LoRA 大模型机器遗忘综述｜方法分类、评测与部署导读</title>
+  <meta name="description" content="LoRA 大模型机器遗忘综述的中文可视化导读，涵盖统一的适配器空间算子视角、六类方法谱系、TOFU 评测协议、隐私风险、持续删除与部署治理。">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#faf9f5">
   <link rel="canonical" href="https://delong-l.github.io/zh/papers/lora-unlearning/">
 
-  <meta property="og:title" content="A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation">
-  <meta property="og:description" content="这是一篇面向可读性的论文可视化页面，对《A Survey of LoRA-based Machine Unlearning for LLMs》中的适配器空间算子视角、六类方法谱系与基于 TOFU 的评测协议进行梳理。">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="LoRA 大模型机器遗忘综述｜方法分类、评测与部署导读">
+  <meta property="og:description" content="涵盖适配器空间算子、六类 LoRA 遗忘方法、TOFU 评测、隐私风险、持续删除与部署治理。">
+  <meta property="og:type" content="article">
   <meta property="og:url" content="https://delong-l.github.io/zh/papers/lora-unlearning/">
   <meta property="og:image" content="https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation">
-  <meta name="twitter:description" content="这是一篇面向可读性的论文可视化页面，对《A Survey of LoRA-based Machine Unlearning for LLMs》中的适配器空间算子视角、六类方法谱系与基于 TOFU 的评测协议进行梳理。">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LoRA 大模型机器遗忘综述｜中文导读">
+  <meta name="twitter:description" content="适配器空间算子、六类方法谱系、TOFU 评测、隐私风险、持续删除与部署治理。">
+  <meta name="twitter:image" content="https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "description": "A survey of adapter-centric machine unlearning for large language models, covering a unified operator view, six method families, evaluation, privacy, and continual deletion.",
+    "inLanguage": "en",
+    "datePublished": "2025",
+    "url": "https://delong-l.github.io/zh/papers/lora-unlearning/",
+    "mainEntityOfPage": "https://delong-l.github.io/zh/papers/lora-unlearning/",
+    "sameAs": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522",
+    "identifier": "SSRN:5866522",
+    "image": "https://delong-l.github.io/papers/lora-unlearning/assets/method-taxonomy-grid.png",
+    "keywords": ["机器遗忘", "LoRA", "大语言模型", "TOFU", "隐私", "持续删除"],
+    "author": [
+      {"@type": "Person", "name": "Delong Li", "url": "https://delong-l.github.io/"},
+      {"@type": "Person", "name": "Guangsheng Yu"},
+      {"@type": "Person", "name": "Xu Wang"},
+      {"@type": "Person", "name": "Yanna Jiang"},
+      {"@type": "Person", "name": "Wencheng Yang"},
+      {"@type": "Person", "name": "Bin Liang"},
+      {"@type": "Person", "name": "Wei Ni"}
+    ],
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://delong-l.github.io/papers/lora-unlearning/paper.pdf",
+      "encodingFormat": "application/pdf"
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,9 +74,56 @@
   </header>
 
   <main id="top">
-    <section class="hero" id="hero-root"></section>
-    <section class="section" id="summary-root"></section>
-    <div id="sections-root"></div>
+    <section class="hero" id="hero-root">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">2025 · 综述论文 · 机器遗忘</p>
+          <h1>A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</h1>
+          <p class="deck">一篇以适配器为中心的综述，讨论 LoRA 模块如何执行遗忘、维持效用，并支撑面向大语言模型的可审计删除流程。</p>
+          <div class="author-block">
+            <p class="authors">Delong Li, Guangsheng Yu, Xu Wang, Yanna Jiang, Wencheng Yang, Bin Liang, Wei Ni</p>
+            <p class="affiliations">悉尼科技大学 · 南昆士兰大学 · 伊迪斯科文大学</p>
+          </div>
+          <div class="button-row">
+            <a class="button primary" href="/papers/lora-unlearning/paper.pdf" target="_blank" rel="noopener">论文 PDF</a>
+            <a class="button secondary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522" target="_blank" rel="noopener">预印本</a>
+            <a class="button secondary" href="#citation">BibTeX</a>
+          </div>
+          <div class="hero-facts">
+            <article><span class="fact-label">方法家族</span><strong>6 类适配器空间方法</strong></article>
+            <article><span class="fact-label">算子视角</span><strong>s、G、P、C、M</strong></article>
+            <article><span class="fact-label">评测设置</span><strong>TOFU + 持续删除 + PrivLeak</strong></article>
+          </div>
+        </div>
+        <figure class="hero-figure figure-roadmap">
+          <img src="/papers/lora-unlearning/assets/survey-roadmap.png" alt="从 LoRA 机器遗忘研究动机到方法分类、评测和治理的路线图">
+          <figcaption>论文路线图将研究动机、统一的适配器空间视角、方法分类、评测协议与部署议题串联起来。</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="section" id="summary-root">
+      <div class="shell">
+        <div class="section-heading"><p class="kicker">概览</p><h2>这篇论文的核心贡献</h2></div>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-index">01</span><h3>面向适配器的遗忘问题表述</h3><p>论文在冻结主干模型和显式 retain/forget 划分下形式化 LoRA 机器遗忘，使适配器检查点成为删除操作的主要承载体。</p></article>
+          <article class="feature-card"><span class="feature-index">02</span><h3>统一的算子化视角</h3><p>作者把现有方法拆成分数构造、预条件、投影、约束与掩码几个环节，使跨家族比较更加清楚。</p></article>
+          <article class="feature-card"><span class="feature-index">03</span><h3>六类方法谱系</h3><p>现有工作被组织为梯度式、影响函数式、Fisher 信息式、结构式、有界动力学式与剪枝或稀疏式方法。</p></article>
+          <article class="feature-card"><span class="feature-index">04</span><h3>评测与部署建议</h3><p>论文汇总 TOFU 风格报告方式、效用与隐私权衡、持续删除行为以及治理落地中的工程问题。</p></article>
+        </div>
+      </div>
+    </section>
+    <div id="sections-root">
+      <section class="section band-soft" id="abstract">
+        <div class="shell">
+          <div class="section-heading"><p class="kicker">摘要</p><h2>为什么 LoRA 机器遗忘值得单独做一篇综述</h2></div>
+          <div class="prose">
+            <p>随着大语言模型走向真实部署，机器遗忘正在从学术议题变成工程需求。但许多既有方法默认可以访问全模型并承担重训成本，这在真实系统中往往并不现实。</p>
+            <p>与此同时，现代适配流程越来越依赖参数高效微调，尤其是把 LoRA 模块附着在冻结主干上，并作为轻量检查点分发的做法。</p>
+            <p>这篇综述聚焦适配器空间中的遗忘：删除请求如何主要在 LoRA 空间内完成，不同方法家族如何权衡遗忘与保留能力，以及这些选择对隐私泄露、持续更新和运维治理意味着什么。</p>
+          </div>
+        </div>
+      </section>
+    </div>
     <section class="section band-soft" id="citation"></section>
   </main>
 
@@ -54,11 +134,12 @@
 {
   "site": {
     "title": "A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation",
+    "og_title": "LoRA 大模型机器遗忘综述｜方法分类、评测与部署导读",
     "short_title": "LoRA遗忘综述",
     "lang": "zh-CN",
     "kicker": "2025 · 综述论文 · 机器遗忘",
     "subtitle": "一篇以适配器为中心的综述，讨论 LoRA 模块如何执行遗忘、维持效用，并支撑面向大语言模型的可审计删除流程。",
-    "meta_description": "这是一篇面向可读性的论文可视化页面，对《A Survey of LoRA-based Machine Unlearning for LLMs》中的适配器空间算子视角、六类方法谱系与基于 TOFU 的评测协议进行梳理。",
+    "meta_description": "LoRA 大模型机器遗忘综述的中文可视化导读，涵盖统一的适配器空间算子视角、六类方法谱系、TOFU 评测协议、隐私风险、持续删除与部署治理。",
     "theme_color": "#faf9f5",
     "canonical_url": "https://delong-l.github.io/zh/papers/lora-unlearning/",
     "og_url": "https://delong-l.github.io/zh/papers/lora-unlearning/",
