@@ -261,6 +261,27 @@ html[lang="zh-CN"] h1 {
     background: rgba(255, 255, 255, 0.7);
 }
 
+.button-mark,
+.social-glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.button-mark {
+    min-width: 1.65em;
+    font-size: 0.72em;
+    letter-spacing: -0.06em;
+}
+
+.social-glyph {
+    font-size: 10px;
+    letter-spacing: -0.05em;
+}
+
 .hero-meta {
     margin-top: 32px;
     font-family: "JetBrains Mono", monospace;
