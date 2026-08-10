@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="sd3RNzgaWNnTUcJwwSt1zjI5d5efvwR_MrtPcQY10F0">
-    <title>Delong Li | Trustworthy AI Researcher</title>
+    <title>Delong Li | Machine Unlearning, AI Security &amp; Trustworthy AI</title>
 
-    <meta name="description" content="Delong Li is a PhD student at the University of Technology Sydney researching machine unlearning, AI security, privacy-aware inference, and trustworthy AI systems.">
+    <meta name="description" content="Delong Li is a PhD researcher and Casual Academic at UTS working on machine unlearning, agentic AI security, privacy-aware inference, and auditable AI systems.">
     <link rel="canonical" href="https://delong-l.github.io/">
     <link rel="alternate" hreflang="en" href="https://delong-l.github.io/">
     <link rel="alternate" hreflang="zh-CN" href="https://delong-l.github.io/zh/">
     <link rel="alternate" hreflang="x-default" href="https://delong-l.github.io/">
     <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#171411">
 
-    <meta property="og:title" content="Delong Li | Trustworthy AI Researcher">
-    <meta property="og:description" content="Research homepage for Delong Li: machine unlearning, AI security, agentic systems, and privacy-aware edge-cloud inference.">
+    <meta property="og:title" content="Delong Li | Machine Unlearning, AI Security &amp; Trustworthy AI">
+    <meta property="og:description" content="Research homepage of Delong Li, covering machine unlearning, agentic AI security, privacy-aware inference, and auditable model updates.">
     <meta property="og:url" content="https://delong-l.github.io/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Delong Li">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Delong Li | Trustworthy AI Researcher">
-    <meta name="twitter:description" content="Machine unlearning, AI security, agentic systems, and privacy-aware edge-cloud inference.">
+    <meta name="twitter:title" content="Delong Li | Machine Unlearning, AI Security &amp; Trustworthy AI">
+    <meta name="twitter:description" content="Machine unlearning, agentic AI security, privacy-aware inference, and auditable AI research at UTS.">
 
     <script type="application/ld+json">
     {
@@ -33,7 +34,15 @@
             "@type": "Organization",
             "name": "University of Technology Sydney"
         },
-        "jobTitle": "PhD Student",
+        "jobTitle": ["PhD Student", "Casual Academic"],
+        "worksFor": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of Technology Sydney",
+            "department": {
+                "@type": "Organization",
+                "name": "Faculty of Engineering and Information Technology"
+            }
+        },
         "knowsAbout": [
             "Machine Unlearning",
             "AI Security",
@@ -55,7 +64,9 @@
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
     <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Noto+Serif+SC:wght@500;600&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
@@ -77,7 +88,6 @@
             --surface-dark-elevated: #252320;
             --on-dark: #faf9f5;
             --on-dark-soft: #a09d96;
-            --accent-teal: #4f9f91;
             --accent-amber: #d89443;
             --radius: 8px;
             --content: 1120px;
@@ -96,16 +106,17 @@
             margin: 0;
             font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
             color: var(--ink);
-            background:
-                linear-gradient(90deg, rgba(20, 20, 19, 0.035) 1px, transparent 1px),
-                linear-gradient(180deg, rgba(20, 20, 19, 0.03) 1px, transparent 1px),
-                var(--canvas);
-            background-size: 42px 42px;
+            background: var(--canvas);
             line-height: 1.55;
         }
 
         a {
             color: inherit;
+        }
+
+        :focus-visible {
+            outline: 3px solid rgba(204, 120, 92, 0.42);
+            outline-offset: 3px;
         }
 
         .site-nav {
@@ -196,6 +207,8 @@
         }
 
         .hero {
+            position: relative;
+            isolation: isolate;
             width: min(var(--content), calc(100% - 40px));
             min-height: min(720px, calc(100vh - 64px));
             margin: 0 auto;
@@ -204,6 +217,23 @@
             grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
             align-items: start;
             gap: 56px;
+        }
+
+        .hero::before {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 100vw;
+            content: "";
+            transform: translateX(-50%);
+            border-bottom: 1px solid var(--hairline-soft);
+            background:
+                linear-gradient(90deg, rgba(20, 20, 19, 0.035) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(20, 20, 19, 0.03) 1px, transparent 1px),
+                var(--canvas);
+            background-size: 42px 42px;
         }
 
         .eyebrow {
@@ -243,6 +273,29 @@
             flex-wrap: wrap;
             gap: 12px;
             margin-top: 34px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 22px;
+            margin-top: 28px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-meta span::before {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+            content: "";
         }
 
         .button {
@@ -315,32 +368,61 @@
             line-height: 1.12;
         }
 
-        .signal-grid {
+        .research-map {
             display: grid;
+            border-top: 1px solid rgba(250, 249, 245, 0.1);
+        }
+
+        .research-track {
+            display: grid;
+            grid-template-columns: 42px minmax(0, 1fr);
             gap: 12px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(250, 249, 245, 0.1);
         }
 
-        .signal-row {
-            display: grid;
-            grid-template-columns: 96px 1fr;
-            gap: 14px;
-            padding: 14px 0;
-            border-top: 1px solid rgba(250, 249, 245, 0.08);
-        }
-
-        .signal-row span {
+        .track-index {
             color: var(--on-dark-soft);
             font-family: "JetBrains Mono", monospace;
             font-size: 12px;
         }
 
-        .signal-row strong {
-            font-size: 14px;
-            font-weight: 500;
+        .track-title {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .track-copy {
+            color: var(--on-dark-soft);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .research-loop {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 22px;
+            color: var(--on-dark-soft);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .research-loop span {
+            color: var(--primary);
         }
 
         .section {
             padding: 92px 0;
+        }
+
+        .section.compact {
+            padding: 72px 0 78px;
         }
 
         .section.alt {
@@ -417,6 +499,58 @@
             text-align: center;
         }
 
+        .updates-list {
+            border-top: 1px solid var(--hairline);
+        }
+
+        .update-row {
+            display: grid;
+            grid-template-columns: 144px minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .update-meta {
+            color: var(--primary-active);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+        }
+
+        .update-row h3 {
+            margin: 0;
+            font-size: 23px;
+            line-height: 1.2;
+        }
+
+        .update-row p {
+            margin: 7px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .text-link {
+            color: var(--body);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .text-link::after {
+            margin-left: 7px;
+            color: var(--primary-active);
+            content: "↗";
+        }
+
+        .text-link:hover {
+            color: var(--primary-active);
+        }
+
         .publication-list {
             display: grid;
             gap: 14px;
@@ -474,6 +608,26 @@
             margin: 14px 0 0;
             color: var(--body);
             font-size: 15px;
+        }
+
+        .paper-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 16px;
+        }
+
+        .paper-topic {
+            padding: 4px 8px;
+            border: 1px solid var(--hairline);
+            border-radius: 999px;
+            background: var(--surface-soft);
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
         }
 
         .paper-links {
@@ -538,11 +692,13 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 18px;
         }
 
         .project-card {
+            display: flex;
+            flex-direction: column;
             padding: 28px;
             border: 1px solid var(--hairline);
             border-radius: 8px;
@@ -575,7 +731,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: auto;
+            padding-top: 20px;
         }
 
         .contact-band {
@@ -654,6 +811,10 @@
                 gap: 18px;
             }
 
+            .update-row {
+                grid-template-columns: 112px minmax(0, 1fr) auto;
+            }
+
             .project-grid {
                 grid-template-columns: 1fr;
             }
@@ -697,9 +858,10 @@
                 padding: 22px;
             }
 
-            .signal-row {
+            .update-row {
                 grid-template-columns: 1fr;
-                gap: 4px;
+                gap: 8px;
+                align-items: start;
             }
 
             .tag-list {
@@ -707,6 +869,8 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="assets/future.css">
+    <script src="assets/future.js" defer></script>
 </head>
 <body>
     <nav class="site-nav" aria-label="Primary navigation">
@@ -717,6 +881,7 @@
             </a>
             <div class="nav-side">
                 <div class="nav-links">
+                    <a href="#updates">Updates</a>
                     <a href="#about">About</a>
                     <a href="#publications">Publications</a>
                     <a href="#projects">Projects</a>
@@ -733,7 +898,7 @@
     <main id="top">
         <section class="hero" aria-labelledby="hero-title">
             <div>
-                <p class="eyebrow">PhD Researcher · UTS CybeR Lab · Trustworthy AI</p>
+                <p class="eyebrow">PhD Researcher &amp; Casual Academic · UTS CybeR Lab · Trustworthy AI</p>
                 <h1 id="hero-title">Delong Li</h1>
                 <p class="hero-copy">
                     I study machine unlearning, agentic AI security, and privacy-aware inference, with a focus on making adaptive AI systems more auditable, governable, and empirically trustworthy.
@@ -747,184 +912,379 @@
                         <i class="ai ai-google-scholar" aria-hidden="true"></i>
                         Scholar profile
                     </a>
+                    <a class="button button-secondary" href="https://orcid.org/0009-0000-8648-8921" target="_blank" rel="noopener">
+                        <i class="ai ai-orcid" aria-hidden="true"></i>
+                        ORCID
+                    </a>
+                </div>
+                <div class="hero-meta" aria-label="Current academic roles">
+                    <span>PhD student · SEMBE, UTS</span>
+                    <span>Casual Academic · FEIT</span>
                 </div>
             </div>
 
-            <aside class="signal-panel" aria-label="Research profile">
+            <aside class="signal-panel" aria-label="Research agenda map">
                 <div class="panel-topbar">
-                    <span>Research snapshot</span>
-                    <strong>Trustworthy AI systems</strong>
+                    <span>Research framework</span>
+                    <strong>03 active tracks</strong>
                 </div>
                 <div class="signal-body">
-                    <p class="signal-title">Research agenda: trustworthy adaptation, privacy-preserving inference, and secure agentic systems.</p>
-                    <div class="signal-grid">
-                        <div class="signal-row">
-                            <span>Affiliation</span>
-                            <strong>School of Electrical & Data Engineering, UTS</strong>
+                    <span class="signal-question-label">Core question</span>
+                    <p class="signal-title">How can adaptive AI systems change without becoming less trustworthy?</p>
+                    <div class="research-map">
+                        <div class="research-track" data-domain="unlearning" role="button" tabindex="0" aria-pressed="false" aria-label="Highlight machine unlearning research">
+                            <span class="track-index">01</span>
+                            <div>
+                                <strong class="track-title">Forget responsibly</strong>
+                                <div class="track-copy">Machine unlearning and verifiable update histories.</div>
+                            </div>
                         </div>
-                        <div class="signal-row">
-                            <span>Current role</span>
-                            <strong>PhD student · UTS CybeR Lab</strong>
+                        <div class="research-track" data-domain="privacy" role="button" tabindex="0" aria-pressed="false" aria-label="Highlight privacy-aware inference research">
+                            <span class="track-index">02</span>
+                            <div>
+                                <strong class="track-title">Infer privately</strong>
+                                <div class="track-copy">Privacy-aware federated and edge-cloud inference.</div>
+                            </div>
                         </div>
-                        <div class="signal-row">
-                            <span>Research axes</span>
-                            <strong>Unlearning, LLM agents, auditability, edge-cloud privacy</strong>
+                        <div class="research-track" data-domain="agents" role="button" tabindex="0" aria-pressed="false" aria-label="Highlight agentic AI security research">
+                            <span class="track-index">03</span>
+                            <div>
+                                <strong class="track-title">Act securely</strong>
+                                <div class="track-copy">Agentic skills, LLM security, and governance.</div>
+                            </div>
                         </div>
                     </div>
+                    <div class="research-loop">Methods <span>↔</span> Evaluation <span>↔</span> Governance</div>
                 </div>
             </aside>
         </section>
 
-        <section class="section alt" id="about">
+        <section class="section compact" id="updates" aria-labelledby="updates-title">
             <div class="section-inner">
                 <div class="section-heading">
-                    <h2>Research agenda and technical focus.</h2>
-                    <p>I work on how AI systems can be updated, forgotten, audited, and deployed under real privacy, security, and governance constraints.</p>
+                    <h2 id="updates-title">Research signals.</h2>
+                    <p>A concise feed of new papers, open-source releases, and research milestones.</p>
                 </div>
-                <div class="about-grid">
-                    <div class="text-block">
-                        <p>
-                            I am currently a PhD student at the University of Technology Sydney and a member of UTS CybeR Lab. My research connects machine unlearning, LLM security, federated and edge inference, evaluation methodology, and agentic AI governance, with an emphasis on systems that can be verified and responsibly operated.
-                        </p>
+                <div class="updates-list" aria-label="Latest research updates">
+                    <article class="update-row" data-kind="publication">
+                        <div class="update-meta">
+                            <time datetime="2026">2026</time>
+                            <span>Preprint</span>
+                        </div>
+                        <div class="update-content">
+                            <h3>SoK: Agentic Skills</h3>
+                            <p>A systematization of reusable skills beyond tool use in LLM agents.</p>
+                        </div>
+                        <a class="text-link" href="papers/agentic-skills/">Explore</a>
+                    </article>
+                    <article class="update-row" data-kind="open-source">
+                        <div class="update-meta">
+                            <time datetime="2026">2026</time>
+                            <span>Open source</span>
+                        </div>
+                        <div class="update-content">
+                            <h3>Academic Paper Skills</h3>
+                            <p>A four-skill Codex bundle for policy, writing, figures and tables, and review.</p>
+                        </div>
+                        <a class="text-link" href="https://github.com/DELONG-L/Academic-Paper-Skills" target="_blank" rel="noopener">GitHub</a>
+                    </article>
+                    <article class="update-row" data-kind="publication">
+                        <div class="update-meta">
+                            <time datetime="2026">2026</time>
+                            <span>Journal</span>
+                        </div>
+                        <div class="update-content">
+                            <h3>AuditableLLM published in Electronics</h3>
+                            <p>A hash-chain-backed framework for compliance-aware LLM update auditing.</p>
+                        </div>
+                        <a class="text-link" href="https://www.mdpi.com/2079-9292/15/1/56" target="_blank" rel="noopener">Publisher</a>
+                    </article>
+                </div>
+                <div class="updates-footnote">
+                    <span>Latest 3 signals</span>
+                    <span>Publications · Open source · Research</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section alt" id="about" aria-labelledby="about-title">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <h2 id="about-title">Research profile.</h2>
+                    <p>A working philosophy for building AI systems that can change under real security, privacy, and governance constraints.</p>
+                </div>
+
+                <div class="profile-layout">
+                    <div class="profile-statement">
+                        <p class="profile-kicker">Working premise</p>
+                        <blockquote>I build AI systems that can change—and still remain trustworthy.</blockquote>
+                        <p class="profile-copy">My work connects machine unlearning, privacy-aware inference, agentic security, and auditable model updates. I focus on systems whose changes can be evaluated, explained, and responsibly operated.</p>
                     </div>
-                    <div class="tag-list" aria-label="Research interests">
-                        <span class="tag">Machine Unlearning</span>
-                        <span class="tag">AI Security</span>
-                        <span class="tag">Federated Learning</span>
-                        <span class="tag">Privacy-Aware Inference</span>
-                        <span class="tag">LLM Agents</span>
-                        <span class="tag">Auditable AI</span>
+
+                    <aside class="identity-panel" aria-label="Current academic profile">
+                        <div class="identity-panel-head">
+                            <span>Current affiliations</span>
+                            <span class="identity-status">Active</span>
+                        </div>
+                        <dl class="identity-list">
+                            <div>
+                                <dt>Role</dt>
+                                <dd>PhD Student</dd>
+                            </div>
+                            <div>
+                                <dt>School</dt>
+                                <dd>SEMBE · UTS</dd>
+                            </div>
+                            <div>
+                                <dt>Lab</dt>
+                                <dd>UTS CybeR Lab</dd>
+                            </div>
+                            <div>
+                                <dt>Teaching</dt>
+                                <dd>Casual Academic · FEIT</dd>
+                            </div>
+                            <div>
+                                <dt>Based in</dt>
+                                <dd>Sydney, Australia</dd>
+                            </div>
+                        </dl>
+                    </aside>
+                </div>
+
+                <div class="principles-grid" aria-label="Research principles">
+                    <article class="principle-card">
+                        <span class="principle-index">01</span>
+                        <h3>Change responsibly.</h3>
+                        <p>Study model adaptation and machine unlearning with verifiable update histories.</p>
+                    </article>
+                    <article class="principle-card">
+                        <span class="principle-index">02</span>
+                        <h3>Operate privately.</h3>
+                        <p>Design federated and edge-cloud inference under practical privacy constraints.</p>
+                    </article>
+                    <article class="principle-card">
+                        <span class="principle-index">03</span>
+                        <h3>Prove trustworthiness.</h3>
+                        <p>Connect security, evaluation, auditability, and governance to operational evidence.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="publications" aria-labelledby="publications-title">
+            <div class="section-inner">
+                <div class="section-heading">
+                    <h2 id="publications-title">Publications and evidence.</h2>
+                    <p>Representative work first, followed by a compact archive designed to grow with future publications.</p>
+                </div>
+
+                <div class="publication-toolbar">
+                    <div class="publication-index-label">
+                        <span>Research index</span>
+                        <strong id="publication-count" data-label=" selected works" data-label-single=" selected work" aria-live="polite">4 selected works</strong>
+                    </div>
+                    <div class="publication-filters" role="group" aria-label="Filter publications by research area">
+                        <button class="publication-filter is-active" type="button" data-publication-filter="all" aria-pressed="true">All</button>
+                        <button class="publication-filter" type="button" data-publication-filter="unlearning" aria-pressed="false">Unlearning</button>
+                        <button class="publication-filter" type="button" data-publication-filter="privacy" aria-pressed="false">Privacy</button>
+                        <button class="publication-filter" type="button" data-publication-filter="agents" aria-pressed="false">Agents</button>
+                        <button class="publication-filter" type="button" data-publication-filter="auditability" aria-pressed="false">Auditability</button>
+                    </div>
+                </div>
+
+                <div id="publication-results">
+                    <div class="collection-heading">
+                        <span>Featured publications</span>
+                        <span>02 / selected</span>
+                    </div>
+
+                    <div class="publication-list featured-publications">
+                        <article class="paper-card" data-year="2026" data-type="preprint" data-featured="true" data-domains="agents auditability">
+                            <div class="paper-meta">
+                                <span class="paper-year">2026</span>
+                                <span class="paper-venue">arXiv preprint</span>
+                            </div>
+                            <div>
+                                <h3>SoK: Agentic Skills -- Beyond Tool Use in LLM Agents</h3>
+                                <p class="authors">Yanna Jiang, <strong>Delong Li</strong>, Haiyu Deng, Baihe Ma, Xu Wang, Qin Wang, Guangsheng Yu</p>
+                                <p class="paper-summary">A systematization of agentic skills across their lifecycle, with taxonomies for packaging, representation, execution, evaluation, and governance risk.</p>
+                                <div class="paper-topics">
+                                    <span class="paper-topic">Agentic systems</span>
+                                    <span class="paper-topic">Skills</span>
+                                    <span class="paper-topic">Governance</span>
+                                </div>
+                            </div>
+                            <div class="paper-links">
+                                <a class="paper-link primary" href="papers/agentic-skills/">Visual page</a>
+                                <a class="paper-link" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">arXiv</a>
+                            </div>
+                        </article>
+
+                        <article class="paper-card" data-year="2025" data-type="preprint" data-featured="true" data-domains="unlearning">
+                            <div class="paper-meta">
+                                <span class="paper-year">2025</span>
+                                <span class="paper-venue">SSRN preprint</span>
+                            </div>
+                            <div>
+                                <h3>A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</h3>
+                                <p class="authors"><strong>Delong Li</strong>, Guangsheng Yu, Xu Wang, Yanna Jiang, Wencheng Yang, Bin Liang, Wei Ni</p>
+                                <p class="paper-summary">A survey of adapter-centric machine unlearning for LLMs, organizing methods through a unified adapter-space taxonomy and evaluation view.</p>
+                                <div class="paper-topics">
+                                    <span class="paper-topic">Machine unlearning</span>
+                                    <span class="paper-topic">LoRA</span>
+                                    <span class="paper-topic">Survey</span>
+                                </div>
+                            </div>
+                            <div class="paper-links">
+                                <a class="paper-link primary" href="papers/lora-unlearning/">Visual page</a>
+                                <a class="paper-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522" target="_blank" rel="noopener">SSRN</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="publication-archive">
+                        <div class="collection-heading archive-heading">
+                            <span>Publication archive</span>
+                            <span>Grouped by year</span>
+                        </div>
+                        <div class="archive-year-group">
+                            <div class="archive-year">
+                                <strong>2026</strong>
+                                <span>02 works</span>
+                            </div>
+                            <div class="archive-items">
+                                <article class="archive-paper" data-year="2026" data-type="journal" data-featured="false" data-domains="unlearning auditability">
+                                    <div class="archive-paper-main">
+                                        <h3>AuditableLLM: A Hash-Chain-Backed, Compliance-Aware Auditable Framework for Large Language Models</h3>
+                                        <p class="archive-authors"><strong>Delong Li</strong>, Guangsheng Yu, Xu Wang, Bin Liang</p>
+                                        <div class="paper-topics">
+                                            <span class="paper-topic">Auditability</span>
+                                            <span class="paper-topic">LLM updates</span>
+                                        </div>
+                                    </div>
+                                    <div class="archive-paper-side">
+                                        <span class="archive-venue">Electronics</span>
+                                        <a class="text-link" href="https://www.mdpi.com/2079-9292/15/1/56" target="_blank" rel="noopener">Publisher</a>
+                                    </div>
+                                </article>
+
+                                <article class="archive-paper" data-year="2026" data-type="journal" data-featured="false" data-domains="privacy">
+                                    <div class="archive-paper-main">
+                                        <h3>Semantic Neighbor Swapping for Privacy-Aware Edge-Cloud Inference</h3>
+                                        <p class="archive-authors"><strong>Delong Li</strong>, Baihe Ma, Yanna Jiang, Chen Li, Xuelei Qi, Xu Wang, Feifan Wang, Bin Liang, Guangsheng Yu</p>
+                                        <div class="paper-topics">
+                                            <span class="paper-topic">Privacy</span>
+                                            <span class="paper-topic">Edge-cloud</span>
+                                        </div>
+                                    </div>
+                                    <div class="archive-paper-side">
+                                        <span class="archive-venue">Journal of Cloud Computing</span>
+                                        <a class="text-link" href="https://link.springer.com/article/10.1186/s13677-026-00916-3" target="_blank" rel="noopener">Publisher</a>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="publications">
+        <section class="section alt" id="projects" aria-labelledby="projects-title">
             <div class="section-inner">
                 <div class="section-heading">
-                    <h2>Selected publications.</h2>
-                    <p>Recent papers across agentic systems, auditable LLM updates, privacy-aware edge-cloud inference, and machine unlearning.</p>
+                    <h2 id="projects-title">Projects and research artifacts.</h2>
+                    <p>Reusable systems, skills, and public research outputs organized to accommodate a growing project portfolio.</p>
                 </div>
 
-                <div class="publication-list">
-                    <article class="paper-card">
-                        <div class="paper-meta">
-                            <span class="paper-year">2026</span>
-                            <span class="paper-venue">arXiv preprint</span>
+                <div class="projects-system">
+                    <article class="featured-project" data-status="active" data-type="skill-bundle" data-featured="true">
+                        <div class="project-status-line">
+                            <span class="status-badge"><i aria-hidden="true"></i> Active</span>
+                            <span>Featured project</span>
                         </div>
-                        <div>
-                            <h3>SoK: Agentic Skills -- Beyond Tool Use in LLM Agents</h3>
-                            <p class="authors">Yanna Jiang, <strong>Delong Li</strong>, Haiyu Deng, Baihe Ma, Xu Wang, Qin Wang, Guangsheng Yu</p>
-                            <p class="paper-summary">A systematization of agentic skills across their lifecycle, with taxonomies for skill packaging, representation, execution scope, evaluation, and governance risk.</p>
-                        </div>
-                        <div class="paper-links">
-                            <a class="paper-link primary" href="papers/agentic-skills/">
-                                Visual page
-                            </a>
-                            <a class="paper-link" href="https://arxiv.org/abs/2602.20867" target="_blank" rel="noopener">
-                                arXiv
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="paper-card">
-                        <div class="paper-meta">
-                            <span class="paper-year">2026</span>
-                            <span class="paper-venue">Electronics</span>
-                        </div>
-                        <div>
-                            <h3>AuditableLLM: A Hash-Chain-Backed, Compliance-Aware Auditable Framework for Large Language Models</h3>
-                            <p class="authors"><strong>Delong Li</strong>, Guangsheng Yu, Xu Wang, Bin Liang</p>
-                            <p class="paper-summary">A lightweight audit layer for LLM adaptation and unlearning that records tamper-evident update trails while supporting third-party verification.</p>
-                        </div>
-                        <div class="paper-links">
-                            <a class="paper-link" href="https://www.mdpi.com/2079-9292/15/1/56" target="_blank" rel="noopener">
-                                Publisher
-                            </a>
+                        <div class="featured-project-grid">
+                            <div class="featured-project-copy">
+                                <p class="project-kicker">Codex skill bundle</p>
+                                <h3>Academic Paper Skills</h3>
+                                <p>A coordinated bundle of four Codex skills for policy-aware writing, manuscript rule auditing, publication-ready figures and tables, and pre-submission review.</p>
+                                <div class="project-links">
+                                    <a class="paper-link primary" href="https://github.com/DELONG-L/Academic-Paper-Skills" target="_blank" rel="noopener">GitHub repository</a>
+                                </div>
+                            </div>
+                            <dl class="project-spec">
+                                <div>
+                                    <dt>Format</dt>
+                                    <dd>Four-skill bundle</dd>
+                                </div>
+                                <div>
+                                    <dt>Focus</dt>
+                                    <dd>Academic workflows</dd>
+                                </div>
+                                <div>
+                                    <dt>Access</dt>
+                                    <dd>Open source</dd>
+                                </div>
+                            </dl>
                         </div>
                     </article>
 
-                    <article class="paper-card">
-                        <div class="paper-meta">
-                            <span class="paper-year">2026</span>
-                            <span class="paper-venue">Journal of Cloud Computing</span>
+                    <div class="project-index">
+                        <div class="collection-heading">
+                            <span>Project index</span>
+                            <span>Maintained artifacts</span>
                         </div>
-                        <div>
-                            <h3>Semantic Neighbor Swapping for Privacy-Aware Edge-Cloud Inference</h3>
-                            <p class="authors"><strong>Delong Li</strong>, Baihe Ma, Yanna Jiang, Chen Li, Xuelei Qi, Xu Wang, Feifan Wang, Bin Liang, Guangsheng Yu</p>
-                            <p class="paper-summary">A post-hoc embedding replacement method that reduces identity leakage in edge-cloud inference while preserving task utility under fixed communication cost.</p>
-                        </div>
-                        <div class="paper-links">
-                            <a class="paper-link" href="https://link.springer.com/article/10.1186/s13677-026-00916-3" target="_blank" rel="noopener">
-                                Publisher
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="paper-card">
-                        <div class="paper-meta">
-                            <span class="paper-year">2025</span>
-                            <span class="paper-venue">SSRN preprint</span>
-                        </div>
-                        <div>
-                            <h3>A Survey of LoRA-based Machine Unlearning for LLMs: Methods, Taxonomy, and Evaluation</h3>
-                            <p class="authors"><strong>Delong Li</strong>, Guangsheng Yu, Xu Wang, Yanna Jiang, Wencheng Yang, Bin Liang, Wei Ni</p>
-                            <p class="paper-summary">A survey of adapter-centric machine unlearning for LLMs, organizing methods through a unified adapter-space taxonomy and evaluation view.</p>
-                        </div>
-                        <div class="paper-links">
-                            <a class="paper-link primary" href="papers/lora-unlearning/">
-                                Visual page
-                            </a>
-                            <a class="paper-link" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5866522" target="_blank" rel="noopener">
-                                SSRN
-                            </a>
-                        </div>
-                    </article>
+                        <article class="project-index-row" data-status="maintained" data-type="codex-skill" data-featured="false">
+                            <span class="project-index-number">01</span>
+                            <div class="project-index-copy">
+                                <div class="project-index-meta">
+                                    <span>Codex skill</span>
+                                    <span>Maintained</span>
+                                </div>
+                                <h3>Paper Visualization</h3>
+                                <p>A reusable skill for turning paper PDFs, preprint pages, or source workspaces into readable static research visualizations.</p>
+                            </div>
+                            <div class="project-index-links">
+                                <a class="paper-link primary" href="https://github.com/DELONG-L/Paper_Visualization" target="_blank" rel="noopener">GitHub</a>
+                                <a class="paper-link" href="papers/agentic-skills/">Live example</a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="section alt" id="projects">
-            <div class="section-inner">
-                <div class="section-heading">
-                    <h2>Projects and research artifacts.</h2>
-                    <p>Reusable research tooling and public artifacts that package methods and workflows for broader reuse.</p>
-                </div>
-
-                <div class="project-grid">
-                    <article class="project-card">
-                        <p class="project-kicker">Codex skill</p>
-                        <h3>Paper Visualization</h3>
-                        <p>A reusable Codex skill for turning paper PDFs, preprint pages, or source workspaces into readable static paper visualizations. The SoK page is maintained as a live example of the skill output.</p>
-                        <div class="project-links">
-                            <a class="paper-link primary" href="https://github.com/DELONG-L/Paper_Visualization" target="_blank" rel="noopener">GitHub repo</a>
-                            <a class="paper-link" href="papers/agentic-skills/">Live example</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section alt" id="contact">
+        <section class="section" id="contact" aria-labelledby="contact-title">
             <div class="section-inner">
                 <div class="contact-band">
-                    <div>
-                        <h2>Get in touch.</h2>
-                        <p>I am open to research discussions and collaborations around LLM security, machine unlearning, privacy, and auditable AI systems.</p>
+                    <div class="contact-copy">
+                        <p class="contact-kicker">Research conversations</p>
+                        <h2 id="contact-title">Let’s exchange ideas.</h2>
+                        <p>I welcome research discussions and collaborations around machine unlearning, agentic security, privacy-aware inference, and auditable AI.</p>
+                        <div class="contact-topics" aria-label="Collaboration topics">
+                            <span>Machine unlearning</span>
+                            <span>Agentic security</span>
+                            <span>Auditable AI</span>
+                        </div>
                     </div>
-                    <div class="socials" aria-label="Contact links">
-                        <a class="icon-link" href="mailto:delong.li-1@student.uts.edu.au" aria-label="Email Delong Li">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                    <div class="contact-actions">
+                        <a class="contact-email" href="mailto:Delong.Li@uts.edu.au">
+                            <span>Email</span>
+                            <strong>Delong.Li@uts.edu.au</strong>
                         </a>
-                        <a class="icon-link" href="https://github.com/DELONG-L" target="_blank" rel="noopener" aria-label="GitHub">
-                            <i class="fab fa-github" aria-hidden="true"></i>
-                        </a>
-                        <a class="icon-link" href="https://www.linkedin.com/in/delong-li-144941353" target="_blank" rel="noopener" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin" aria-hidden="true"></i>
-                        </a>
-                        <a class="icon-link" href="https://scholar.google.com/citations?user=hItKYpwAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar">
-                            <i class="ai ai-google-scholar" aria-hidden="true"></i>
-                        </a>
+                        <div class="socials" aria-label="Contact links">
+                            <a class="icon-link" href="https://github.com/DELONG-L" target="_blank" rel="noopener" aria-label="GitHub">
+                                <i class="fab fa-github" aria-hidden="true"></i>
+                            </a>
+                            <a class="icon-link" href="https://www.linkedin.com/in/delong-li-144941353" target="_blank" rel="noopener" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                            <a class="icon-link" href="https://scholar.google.com/citations?user=hItKYpwAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar">
+                                <i class="ai ai-google-scholar" aria-hidden="true"></i>
+                            </a>
+                            <a class="icon-link" href="https://orcid.org/0009-0000-8648-8921" target="_blank" rel="noopener" aria-label="ORCID">
+                                <i class="ai ai-orcid" aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -936,8 +1296,5 @@
         <span>&copy; <span id="year">2026</span> All rights reserved.</span>
     </footer>
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
