@@ -2,26 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://delong-l.github.io/</loc>
-    <lastmod>2026-08-11</lastmod>
-  </url>
-  <url>
-    <loc>https://delong-l.github.io/zh/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-10-07T06:31:44.469Z</lastmod>
   </url>
   <url>
     <loc>https://delong-l.github.io/papers/agentic-skills/</loc>
-    <lastmod>2026-08-11</lastmod>
-  </url>
-  <url>
-    <loc>https://delong-l.github.io/zh/papers/agentic-skills/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-11T03:19:22+10:00</lastmod>
   </url>
   <url>
     <loc>https://delong-l.github.io/papers/lora-unlearning/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-11T03:19:22+10:00</lastmod>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/publications/</loc>
+    <lastmod>2026-10-07T06:31:44.470Z</lastmod>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/tools/</loc>
+    <lastmod>2026-10-07T06:31:44.470Z</lastmod>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/zh/</loc>
+    <lastmod>2026-10-07T06:31:44.470Z</lastmod>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/zh/papers/agentic-skills/</loc>
+    <lastmod>2026-08-11T03:19:22+10:00</lastmod>
   </url>
   <url>
     <loc>https://delong-l.github.io/zh/papers/lora-unlearning/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-11T03:19:22+10:00</lastmod>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/zh/publications/</loc>
+    <lastmod>2026-10-07T06:31:44.471Z</lastmod>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/zh/tools/</loc>
+    <lastmod>2026-10-07T06:31:44.471Z</lastmod>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Jev-Research/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/agents-skills/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/experiments/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/git-overleaf/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/literature-gaps/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/project-workspace/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/references/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/review-sharing/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/writing-figures/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/guide/your-workflow/</loc>
+  </url>
+  <url>
+    <loc>https://delong-l.github.io/Research-Workflow-2026/resources/</loc>
   </url>
 </urlset>
