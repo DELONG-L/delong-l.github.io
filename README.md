@@ -14,7 +14,7 @@ Research on network control, machine unlearning, privacy-aware inference, and ag
 
 | Find | Open |
 |---|---|
-| Research directions and selected work | [Research](https://delong-l.github.io/#research) |
+| Research directions and selected work | [Research](https://delong-l.github.io/#publications) |
 | Papers and publication records | [Publications](https://delong-l.github.io/publications/) |
 | Research skills and workflow resources | [Tools and resources](https://delong-l.github.io/tools/) |
 | Contact and professional profiles | [Contact](https://delong-l.github.io/#contact) |

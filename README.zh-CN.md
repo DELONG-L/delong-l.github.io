@@ -14,7 +14,7 @@
 
 | 内容 | 入口 |
 |---|---|
-| 研究方向与代表性工作 | [研究](https://delong-l.github.io/zh/#research) |
+| 研究方向与代表性工作 | [研究](https://delong-l.github.io/zh/#publications) |
 | 论文与发表记录 | [论文列表](https://delong-l.github.io/zh/publications/) |
 | 科研技能与工作流资源 | [工具与资源](https://delong-l.github.io/zh/tools/) |
 | 联系方式与学术档案 | [联系](https://delong-l.github.io/zh/#contact) |
