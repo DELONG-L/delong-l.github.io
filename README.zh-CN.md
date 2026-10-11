@@ -6,7 +6,7 @@
 
 </div>
 
-[![Delong Li 学术个人主页](docs/previews/homepage.jpg)](https://delong-l.github.io/zh/)
+[![李德龙中文学术个人主页](docs/previews/homepage-zh.jpg)](https://delong-l.github.io/zh/)
 
 研究涉及网络控制、机器遗忘、隐私感知推理和智能体人工智能安全。网站以中英文介绍研究方向、代表性工作、论文、科研工具和联系方式。
 
